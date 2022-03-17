@@ -1,25 +1,25 @@
-import React from 'react'
-import serverCall from './server';
+import React from 'react';
+import musicCall from './musicCall'
 
-const App = () => {
+function App() {
   const fetchPopularComposers = async () => {
-    const data = await serverCall.getPopularComposers();
+    const data = await musicCall.getPopularComposers();
     console.log(data.composers)
   }
 
   const fetchAllComposers = async () => {
-    const data = await serverCall.getAllComposers();
+    const data = await musicCall.getAllComposers();
     console.log(data.composers);
   }
 
-  const fetchComposer = async (name) => {
-    const data = await serverCall.getComposer(name);
+  const fetchComposer = async (name:string) => {
+    const data = await musicCall.getComposer(name);
     console.log(data.composers)
   }
 
   return (
     <div className="App">
-      <h1>Testing API calls</h1>
+      <h1>Testing APIs</h1>
       <button onClick={fetchAllComposers}>Fetch all composers</button>
       <button onClick={fetchPopularComposers}>Fetch popular composers</button>
       <button onClick={() => fetchComposer('schu')}>Fetch Mozart</button>

@@ -13,15 +13,15 @@ const getPopularComposers = async () => {
   return response.data
 }
 
-const getComposer = async (name) => {
+const getComposer = async (name:string) => {
   const response = await axios.get(`${baseUrl}/composer/list/search/${name}.json`)
   return response.data
 }
 
-const serverCall = {
+const musicCall = {
   getAllComposers,
   getPopularComposers,
   getComposer
 }
 
-export default serverCall
+export default musicCall
