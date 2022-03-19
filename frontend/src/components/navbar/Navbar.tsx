@@ -32,8 +32,8 @@ const Navbar = () => {
           <StyledLink to="/home">
             <li>Home</li>
           </StyledLink>
-          <StyledLink to="/composers">
-            <li>Composers</li>
+          <StyledLink to="/timeline">
+            <li>Timeline</li>
           </StyledLink>
       </StyledList>
     </StyledNav>

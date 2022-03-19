@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Main from "./components/Main";
-import ComposerList from "./components/composers/ComposerList";
 import Home from "./components/home/Home";
+import Timeline from "./components/timeline/Timeline";
 
 const Router = () => {
   return (
@@ -9,7 +9,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Main />}>
           <Route index element={<Home />} />
-          <Route path="/composers" element={<ComposerList />} />
+          <Route path="/timeline" element={<Timeline />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
