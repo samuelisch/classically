@@ -7,7 +7,7 @@ const StyledContainer = styled.div`
 `
 
 const StyledContent = styled.div`
-  flex: 6 1 0;
+  flex: 7 1 0;
 `
 
 const Main = () => {
