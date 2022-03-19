@@ -13,7 +13,7 @@ export type ComposerType = {
 };
 
 type ComposersState = {
-  status: "loading" | "idle";
+  status: "loading" | "idle" | "loaded";
   error: string | null;
   composerList: ComposerType[];
 };
@@ -35,7 +35,7 @@ export const composersSlice = createSlice({
     });
     builder.addCase(fetchAllComposers.fulfilled, (state, action) => {
       state.composerList = action.payload;
-      state.status = "idle";
+      state.status = "loaded";
     });
     builder.addCase(fetchAllComposers.rejected, (state, action) => {
       if (action.payload) {
