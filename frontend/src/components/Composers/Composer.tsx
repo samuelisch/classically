@@ -1,19 +1,10 @@
 import React from 'react';
+import { ComposerType } from '../../reducers/composersSlice';
 
-interface PropsType {
-  id: string,
-  birth: string,
-  death: string,
-  name: string,
-  completeName: string,
-  epoch: string,
-  portrait: string
-}
-
-const Composer = ({ id, birth, death, name, completeName, epoch, portrait }:PropsType) => {
+const Composer = ({ id, birth, death, name, completeName, epoch, portrait }:ComposerType) => {
 
   return (
-    <div>{id} birth: {birth} death: {death} {completeName} {epoch}</div>
+    <li>{id} birth: {birth} death: {death} {completeName} {epoch}</li>
   )
 }
 
