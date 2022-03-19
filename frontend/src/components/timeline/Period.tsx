@@ -1,10 +1,22 @@
 import styled from 'styled-components'
 import { ComposerType } from '../../reducers/composersSlice';
+import { listColor } from '../../utils';
+
 import Composer from './Composer'
 
-const StyledContainer = styled.div`
-  padding: 8px 0 0 15px;
-  background: orange;
+type StyledProps = {
+  period: string
+}
+
+const StyledContainer = styled.div<StyledProps>`
+  padding-left: 20px;
+  background: ${props => listColor(props.period)};
+
+  h4 {
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    color: rgb(240, 240, 240);
+  }
 `
 
 const StyledList = styled.ul`
@@ -33,7 +45,7 @@ const Period = ({ period, composerList }: PropsType) => {
   });
 
   return (
-    <StyledContainer>
+    <StyledContainer period={period}>
       <h4>{period}</h4>
       <StyledList>{composers}</StyledList>
     </StyledContainer>

@@ -1,8 +1,9 @@
 import { ComposerType } from '../../reducers/composersSlice';
 import styled from 'styled-components';
+import { showYear } from '../../utils';
 
 const StyledLi = styled.li`
-  border: 1px solid green;
+  border-bottom: 1px solid rgb(100, 100, 100);
   padding: 10px 20px;
   flex: 1;
   font-size: 1.8rem;
@@ -17,6 +18,7 @@ const StyledLi = styled.li`
 
   &:last-of-type {
     border-bottom-left-radius: 10px;
+    border-bottom: none;
   }
 `
 
@@ -44,10 +46,6 @@ const StyledDates = styled.span`
 `
 
 const Composer = ({ id, birth, death, name, completeName, epoch, portrait }:ComposerType) => {
-  const showYear = (date: string) => {
-    return date.split('-')[0]
-  }
-
   return (
     <StyledLi>
       <StyledDetails>
@@ -60,7 +58,6 @@ const Composer = ({ id, birth, death, name, completeName, epoch, portrait }:Comp
       </StyledDetails>
       <StyledDates>
         <span>b: {showYear(birth)}</span>
-        <span>d: {death ? showYear(death) : '-'}</span>
       </StyledDates>
     </StyledLi>
   )
