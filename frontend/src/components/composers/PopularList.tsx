@@ -16,18 +16,18 @@ const PopularList = () => {
   const { popularList, status } = useAppSelector((state) => state.popular);
 
   useEffect(() => {
-    if (status !== "loaded") {
-      dispatch(fetchPopularComposers());
-    }
-  }, [dispatch, status]);
-
-  useEffect(() => {
     if (status === "loaded") {
       setLoaded(true);
     } else {
       setLoaded(false);
     }
   }, [status]);
+  
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchPopularComposers());
+    }
+  }, [dispatch, status]);
 
   const allPopular = popularList.map((composer: any) => (
     <Popular

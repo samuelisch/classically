@@ -45,9 +45,13 @@ const StyledDates = styled.span`
   font-size: 1.3rem;
 `
 
-const Composer = ({ id, birth, name, portrait }:ComposerType) => {
+const Composer = ({ birth, name, completeName, portrait }: ComposerType) => {
+  const handleClick = () => {
+    console.log(completeName)
+  }
+
   return (
-    <StyledLi>
+    <StyledLi onClick={handleClick}>
       <StyledDetails>
         <StyledImageContainer>
           <img src={portrait} alt="" />

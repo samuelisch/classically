@@ -11,18 +11,18 @@ const Timeline = () => {
   const { composerList, status } = useAppSelector((state) => state.composers);
 
   useEffect(() => {
-    if (status !== "loaded") {
-      dispatch(fetchAllComposers());
-    }
-  }, [dispatch, status]);
-
-  useEffect(() => {
     if (status === "loaded") {
       setLoaded(true);
     } else {
       setLoaded(false);
     }
   }, [status]);
+  
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchAllComposers());
+    }
+  }, [dispatch, status]);
 
   const periods = [
     "Medieval",

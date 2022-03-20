@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import musicCall from "../musicCall";
-import type { RootState } from "./store";
 import type { ComposerType } from "./composersSlice";
 
 type PopularState = {
@@ -36,9 +35,6 @@ export const popularSlice = createSlice({
     });
   },
 })
-
-export const selectStatus = (state: RootState) => state.popular.status
-export const selectComposers = (state: RootState) => state.popular.popularList;
 
 export const fetchPopularComposers = createAsyncThunk<ComposerType[]>(
   "popular/init",

@@ -37,10 +37,13 @@ const StyledImageContainer = styled.div`
   }
 `
 
-const Popular = ({id, completeName, epoch, portrait}: ComposerType) => {
+const Popular = ({ completeName, epoch, portrait }: ComposerType) => {
+  const handleClick = () => {
+    console.log(completeName)
+  }
 
   return (
-    <StyledLi>
+    <StyledLi onClick={handleClick}>
       <StyledImageContainer>
         <img src={portrait} alt="" />
       </StyledImageContainer>

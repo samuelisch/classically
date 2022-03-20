@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import { createGlobalStyle } from "styled-components";
+import { fetchEverything } from "./reducers/dumpSlice";
+import { useAppDispatch } from "./reducers/hooks";
 
 import Router from "./Router";
 
@@ -19,6 +22,12 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchEverything());
+  }, [dispatch])
+
   return (
     <>
       <GlobalStyle />

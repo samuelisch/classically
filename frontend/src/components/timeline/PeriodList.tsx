@@ -13,7 +13,7 @@ const StyledContainer = styled.div`
 
 `
 
-const PeriodList = ({periods, composerList}: PropTypes) => {
+const PeriodList = ({ periods, composerList }: PropTypes) => {
   const allPeriods = periods.map((period, i) => {
     const periodComposers = composerList
       .filter(composer => composer.epoch === period)

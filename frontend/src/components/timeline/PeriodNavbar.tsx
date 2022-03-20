@@ -17,7 +17,7 @@ type PropTypes = {
   periods: string[]
 }
 
-const PeriodNavbar = ({periods}: PropTypes) => {
+const PeriodNavbar = ({ periods }: PropTypes) => {
   const elements = periods.map((period, i) => (
     <NavPeriod 
       key={i}

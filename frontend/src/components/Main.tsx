@@ -13,6 +13,7 @@ const StyledContent = styled.div`
 `
 
 const Main = () => {
+
   return (
     <StyledContainer>
       <Navbar />
