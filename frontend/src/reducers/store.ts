@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import composersSlice from './composersSlice';
+import popularSlice from './popularSlice';
 
 export const store = configureStore({
   reducer: {
-    composers: composersSlice
+    composers: composersSlice,
+    popular: popularSlice,
   }
 })
 

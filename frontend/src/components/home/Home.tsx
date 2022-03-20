@@ -11,11 +11,17 @@ const Home = () => {
     console.log(data.composers);
   };
 
+  const fetchOmni = async(id: string) => {
+    const data = await musicCall.getWorks(id);
+    console.log(data.works);
+  }
+
   return (
     <>
       <h1>Testing APIs</h1>
       <button onClick={fetchPopularComposers}>Fetch popular composers</button>
       <button onClick={() => fetchComposer("moza")}>Fetch Mozart</button>
+      <button onClick={() => fetchOmni('2')}>Fetch works</button>
     </>
   )
 }

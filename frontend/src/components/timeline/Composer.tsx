@@ -4,7 +4,7 @@ import { showYear } from '../../utils';
 
 const StyledLi = styled.li`
   border-bottom: 1px solid rgb(100, 100, 100);
-  padding: 10px 20px;
+  padding: 5px 10px;
   flex: 1;
   font-size: 1.5rem;
   display: flex;
@@ -28,7 +28,7 @@ const StyledDetails = styled.div`
 `
 
 const StyledImageContainer = styled.div`
-  width: 35px;
+  width: 25px;
   margin-right: 20px;
 
   img {
@@ -45,7 +45,7 @@ const StyledDates = styled.span`
   font-size: 1.3rem;
 `
 
-const Composer = ({ id, birth, death, name, completeName, epoch, portrait }:ComposerType) => {
+const Composer = ({ id, birth, name, portrait }:ComposerType) => {
   return (
     <StyledLi>
       <StyledDetails>

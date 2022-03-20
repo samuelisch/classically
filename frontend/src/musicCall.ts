@@ -9,7 +9,7 @@ const getAllComposers = async () => {
 }
 
 const getPopularComposers = async () => {
-  const response = await axios.get(`${baseUrl}/composer/list/pop.json`);
+  const response = await axios.get(`${baseUrl}/composer/list/rec.json`);
   return response.data
 }
 
@@ -18,10 +18,16 @@ const getComposer = async (name:string) => {
   return response.data
 }
 
+const getWorks = async (id:string) => {
+  const response = await axios.get(`${baseUrl}/work/list/composer/${id}/all.json`)
+  return response.data
+}
+
 const musicCall = {
   getAllComposers,
   getPopularComposers,
-  getComposer
+  getComposer,
+  getWorks
 }
 
 export default musicCall

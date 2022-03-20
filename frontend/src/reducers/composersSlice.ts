@@ -47,8 +47,7 @@ export const composersSlice = createSlice({
 });
 
 export const selectStatus = (state: RootState) => state.composers.status;
-export const selectComposers = (state: RootState) =>
-  state.composers.composerList;
+export const selectComposers = (state: RootState) => state.composers.composerList;
 
 export const fetchAllComposers = createAsyncThunk<ComposerType[]>(
   "composers/init",
