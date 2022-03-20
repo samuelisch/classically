@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const baseUrl = 'https://api.openopus.org'
-const spotifyUrl = 'https://api.spotify.com/v1'
+// const spotifyUrl = 'https://api.spotify.com/v1'
 
 const getAllComposers = async () => {
   const response = await axios.get(`${baseUrl}/composer/list/epoch/all.json`)

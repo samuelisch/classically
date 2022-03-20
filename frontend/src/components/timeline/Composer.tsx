@@ -6,7 +6,7 @@ const StyledLi = styled.li`
   border-bottom: 1px solid rgb(100, 100, 100);
   padding: 10px 20px;
   flex: 1;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +28,7 @@ const StyledDetails = styled.div`
 `
 
 const StyledImageContainer = styled.div`
-  width: 50px;
+  width: 35px;
   margin-right: 20px;
 
   img {

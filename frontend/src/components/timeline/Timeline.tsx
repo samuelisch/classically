@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../reducers/hooks";
 import { fetchAllComposers } from "../../reducers/composersSlice";
-import { showYear } from "../../utils";
 
-import Period from "./Period";
-
-const StyledContainer = styled.div`
-  margin: 0 auto;
-`;
+import PeriodNavbar from "./PeriodNavbar";
+import PeriodList from "./PeriodList";
 
 const Timeline = () => {
   const dispatch = useAppDispatch();
@@ -19,7 +14,7 @@ const Timeline = () => {
     if (status !== "loaded") {
       dispatch(fetchAllComposers());
     }
-  }, []);
+  }, [dispatch, status]);
 
   useEffect(() => {
     if (status === "loaded") {
@@ -42,30 +37,17 @@ const Timeline = () => {
     "21st Century"
   ];
 
-  const allPeriods = periods.map((period, i) => {
-    const periodComposers = composerList
-      .filter(composer => composer.epoch === period)
-      .sort((a, b) => parseInt(showYear(a.birth)) - parseInt(showYear(b.birth)))
-    return (
-      <Period
-        key={i}
-        period={period}
-        composerList={periodComposers}
-      />
-    )
-  })
-
   return (
-    <StyledContainer>
-      <h1>Composer List</h1>
+    <>
       {loaded ? (
         <>
-          {allPeriods}
+          <PeriodNavbar periods={periods} />
+          <PeriodList periods={periods} composerList={composerList} />
         </>
       ) : (
         <h1>Loading ...</h1>
       )}
-    </StyledContainer>
+    </>
   );
 };
 

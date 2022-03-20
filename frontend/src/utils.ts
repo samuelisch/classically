@@ -5,26 +5,53 @@ export const showYear = (date: string) => {
 export const listColor = (period: string) => {
   switch (period) {
     case 'Medieval':
-      return "orange"
+      return "#cc5500"
     case 'Renaissance':
-      return 'turquoise'
+      return '#00ced1'
     case 'Baroque':
-      return 'skyblue'
+      return '#8cbed6'
     case 'Classical':
-      return 'darkblue'
+      return '#00008b'
     case 'Early Romantic':
-      return 'red';
+      return '#af4035';
     case 'Romantic':
-      return 'grey'
+      return '#7851a9'
     case 'Late Romantic':
-      return 'pink'
+      return '#e75480'
     case '20th Century':
-      return 'lime'
+      return '#9ab10a'
     case 'Post-War':
-      return 'maroon'
+      return '#800000'
     case '21st Century':
-      return 'yellow'
+      return '#8b8000'
     default:
       return 'rgb(240, 240, 240'
+  }
+}
+
+export const listYears = (period: string) => {
+  switch (period) {
+    case 'Medieval':
+      return "1150 - 1400"
+    case 'Renaissance':
+      return '1400 - 1600'
+    case 'Baroque':
+      return '1600 - 1750'
+    case 'Classical':
+      return '1750 - 1830'
+    case 'Early Romantic':
+      return '1830 - 1860';
+    case 'Romantic':
+      return '1860 - 1890'
+    case 'Late Romantic':
+      return '1890 - 1910'
+    case '20th Century':
+      return '1900 - 1945'
+    case 'Post-War':
+      return '1945 - 2000'
+    case '21st Century':
+      return '2000 - 2100'
+    default:
+      return ' - '
   }
 }

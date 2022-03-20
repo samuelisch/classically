@@ -15,7 +15,7 @@ const Home = () => {
     <>
       <h1>Testing APIs</h1>
       <button onClick={fetchPopularComposers}>Fetch popular composers</button>
-      <button onClick={() => fetchComposer("schu")}>Fetch Mozart</button>
+      <button onClick={() => fetchComposer("moza")}>Fetch Mozart</button>
     </>
   )
 }

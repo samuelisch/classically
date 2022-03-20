@@ -45,7 +45,7 @@ const Period = ({ period, composerList }: PropsType) => {
   });
 
   return (
-    <StyledContainer period={period}>
+    <StyledContainer id={period} period={period}>
       <h4>{period}</h4>
       <StyledList>{composers}</StyledList>
     </StyledContainer>

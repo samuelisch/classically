@@ -7,7 +7,9 @@ const StyledContainer = styled.div`
 `
 
 const StyledContent = styled.div`
-  flex: 7 1 0;
+  flex: 1;
+  height: 100vh;
+  overflow: scroll;
 `
 
 const Main = () => {
