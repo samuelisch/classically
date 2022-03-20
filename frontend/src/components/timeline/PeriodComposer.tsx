@@ -47,7 +47,7 @@ const StyledDates = styled.span`
   font-size: 1.3rem;
 `
 
-const Composer = ({ id, birth, name, complete_name, portrait }:ComposerType) => {
+const Composer = ({ id, birth, name, portrait }:ComposerType) => {
   const navigate = useNavigate();
 
   const handleClick = () => {

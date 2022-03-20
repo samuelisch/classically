@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ComposerType } from "../../reducers/composersSlice";
-import { useAppSelector } from "../../reducers/hooks";
 
 const StyledLi = styled.li`
   border-bottom: 1px solid rgb(100, 100, 100);
