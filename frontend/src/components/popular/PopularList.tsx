@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useAppDispatch, useAppSelector } from "../../reducers/hooks";
-import { fetchPopularComposers } from "../../reducers/popularSlice";
+import { useAppSelector } from "../../reducers/hooks";
 import Popular from "./Popular";
 
 const StyledContainer = styled.div`
@@ -11,7 +10,6 @@ const StyledContainer = styled.div`
 `
 
 const PopularList = () => {
-  const dispatch = useAppDispatch();
   const [loaded, setLoaded] = useState(false);
   const { popularList, status } = useAppSelector((state) => state.popular);
 
@@ -22,12 +20,6 @@ const PopularList = () => {
       setLoaded(false);
     }
   }, [status]);
-  
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchPopularComposers());
-    }
-  }, [dispatch, status]);
 
   const allPopular = popularList.map((composer: any) => (
     <Popular
@@ -36,7 +28,7 @@ const PopularList = () => {
       birth={composer.birth}
       death={composer.death}
       name={composer.name}
-      completeName={composer.complete_name}
+      complete_name={composer.complete_name}
       epoch={composer.epoch}
       portrait={composer.portrait}
     />

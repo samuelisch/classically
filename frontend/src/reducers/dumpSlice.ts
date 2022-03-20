@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import musicCall from "../musicCall";
 
-type ComposerWorkType = {
+export type ComposerWorkType = {
   genre: string,
   subtitle: string,
   title: string,
@@ -54,7 +54,7 @@ export const fetchEverything = createAsyncThunk<DumpComposerType[]>(
   "dump/init",
   async () => {
     const data = await musicCall.getEverything();
-    console.log(data.composers)
+    console.log('fetched')
     return data.composers;
   }
 );

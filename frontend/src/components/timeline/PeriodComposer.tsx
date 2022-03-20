@@ -1,6 +1,7 @@
 import { ComposerType } from '../../reducers/composersSlice';
 import styled from 'styled-components';
 import { showYear } from '../assets/utils';
+import { useNavigate } from 'react-router-dom';
 
 const StyledLi = styled.li`
   border-bottom: 1px solid rgb(100, 100, 100);
@@ -29,13 +30,14 @@ const StyledDetails = styled.div`
 
 const StyledImageContainer = styled.div`
   width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  overflow: hidden;
   margin-right: 20px;
 
   img {
-    border-radius: 50%;
     width: 100%;
     height: 100%;
-    object-fit: cover;
   }
 `
 
@@ -45,9 +47,11 @@ const StyledDates = styled.span`
   font-size: 1.3rem;
 `
 
-const Composer = ({ birth, name, completeName, portrait }: ComposerType) => {
+const Composer = ({ id, birth, name, complete_name, portrait }:ComposerType) => {
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    console.log(completeName)
+    navigate(`/composer/${id}`)
   }
 
   return (

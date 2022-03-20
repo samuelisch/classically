@@ -31,10 +31,13 @@ const Navbar = () => {
             <li>Home</li>
           </StyledLink>
           <StyledLink to="/popular">
-            <li>Composers</li>
+            <li>Featured</li>
           </StyledLink>
           <StyledLink to="/timeline">
             <li>Timeline</li>
+          </StyledLink>
+          <StyledLink to="">
+            <li>Search</li>
           </StyledLink>
       </StyledList>
     </StyledNav>

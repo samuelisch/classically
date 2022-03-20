@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { createGlobalStyle } from "styled-components";
+import { fetchAllComposers } from "./reducers/composersSlice";
 import { fetchEverything } from "./reducers/dumpSlice";
 import { useAppDispatch } from "./reducers/hooks";
+import { fetchPopularComposers } from "./reducers/popularSlice";
 
 import Router from "./Router";
 
@@ -26,6 +28,8 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchEverything());
+    dispatch(fetchAllComposers());
+    dispatch(fetchPopularComposers());
   }, [dispatch])
 
   return (

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { ComposerType } from '../../reducers/composersSlice';
 import { listColor } from '../assets/utils';
 
-import Composer from './Composer'
+import Composer from './PeriodComposer'
 
 type StyledProps = {
   period: string
@@ -13,7 +13,7 @@ const StyledContainer = styled.div<StyledProps>`
   background: ${props => listColor(props.period)};
 
   h4 {
-    padding: 5px 10px;
+    padding: 3px 10px;
     font-size: 1.5rem;
     color: rgb(240, 240, 240);
   }
@@ -37,7 +37,7 @@ const Period = ({ period, composerList }: PropsType) => {
         birth={composer.birth}
         death={composer.death}
         name={composer.name}
-        completeName={composer.complete_name}
+        complete_name={composer.complete_name}
         epoch={composer.epoch}
         portrait={composer.portrait}
       />

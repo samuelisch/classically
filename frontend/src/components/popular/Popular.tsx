@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ComposerType } from "../../reducers/composersSlice";
+import { useAppSelector } from "../../reducers/hooks";
 
 const StyledLi = styled.li`
   border-bottom: 1px solid rgb(100, 100, 100);
@@ -37,9 +39,15 @@ const StyledImageContainer = styled.div`
   }
 `
 
-const Popular = ({ completeName, epoch, portrait }: ComposerType) => {
+const Popular = ({ id, complete_name, epoch, portrait }: ComposerType) => {
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    console.log(completeName)
+    // const selected = dumpList.find(composer => composer.complete_name === completeName)
+    // if (selected) {
+    //   console.log(selected.works)
+    // }
+    navigate(`/composer/${id}`)
   }
 
   return (
@@ -48,7 +56,7 @@ const Popular = ({ completeName, epoch, portrait }: ComposerType) => {
         <img src={portrait} alt="" />
       </StyledImageContainer>
       <StyledDetails>
-      <StyledName>{completeName}</StyledName>
+      <StyledName>{complete_name}</StyledName>
       <StyledPeriod>{epoch}</StyledPeriod>
     </StyledDetails>
     </StyledLi>

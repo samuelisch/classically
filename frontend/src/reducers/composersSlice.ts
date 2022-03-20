@@ -6,7 +6,7 @@ export type ComposerType = {
   birth: string;
   death: string;
   name: string;
-  completeName: string;
+  complete_name: string;
   epoch: string;
   portrait: string;
 };

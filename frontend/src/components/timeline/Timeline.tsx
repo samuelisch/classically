@@ -17,12 +17,6 @@ const Timeline = () => {
       setLoaded(false);
     }
   }, [status]);
-  
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchAllComposers());
-    }
-  }, [dispatch, status]);
 
   const periods = [
     "Medieval",
