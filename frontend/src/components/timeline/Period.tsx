@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { ComposerType } from '../../reducers/composersSlice';
-import { listColor } from '../../utils';
+import { listColor } from '../assets/utils';
 
 import Composer from './Composer'
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { ComposerType } from '../../reducers/composersSlice'
-import { showYear } from '../../utils'
+import { showYear } from '../assets/utils'
 
 import Period from './Period'
 

@@ -1,6 +1,6 @@
 import { ComposerType } from '../../reducers/composersSlice';
 import styled from 'styled-components';
-import { showYear } from '../../utils';
+import { showYear } from '../assets/utils';
 
 const StyledLi = styled.li`
   border-bottom: 1px solid rgb(100, 100, 100);

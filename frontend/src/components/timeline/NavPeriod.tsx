@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { listColor, listYears } from '../../utils'
+import { listColor, listYears } from '../assets/utils'
 
 type StyledProps = {
   period: string
