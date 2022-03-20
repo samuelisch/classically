@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../reducers/hooks";
-import { fetchAllComposers } from "../../reducers/composersSlice";
+import { useAppSelector } from "../../reducers/hooks";
 
 import PeriodNavbar from "./PeriodNavbar";
 import PeriodList from "./PeriodList";
 
 const Timeline = () => {
-  const dispatch = useAppDispatch();
   const [loaded, setLoaded] = useState(false);
   const { composerList, status } = useAppSelector((state) => state.composers);
 
