@@ -1,7 +1,17 @@
 import styled from 'styled-components'
 
 const StyledElement = styled.li`
+  padding: 5px 0;
+  margin: 0 5px;
+  border-bottom: 1px solid rgb(180, 180, 180);
+`
 
+const StyledTitle = styled.h4`
+  font-size: 1.3rem;
+`
+
+const StyledGenre = styled.span`
+  font-size: 1.1rem;
 `
 
 export type WorkType = {
@@ -13,8 +23,8 @@ export type WorkType = {
 const Work = ({ genre, title, subtitle }: WorkType) => {
   return (
     <StyledElement>
-      <h4>{title}</h4>
-      <span>{genre}</span>
+      <StyledTitle>{title}</StyledTitle>
+      <StyledGenre>{genre}</StyledGenre>
     </StyledElement>
   )
 }

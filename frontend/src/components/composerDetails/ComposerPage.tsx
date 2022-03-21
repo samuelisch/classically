@@ -9,10 +9,14 @@ import WorksList from "./WorksList";
 
 const StyledContainer = styled.div`
   position: relative;
-  padding: 5px 5px 10px;
+  padding-bottom: 10px;
 `;
 
 const StyledTop = styled.div`
+  position: sticky;
+  top: 0;
+  background: rgb(240, 240, 240);
+  padding: 5px;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -75,10 +79,10 @@ const ComposerPage = () => {
         <div className="svgContainer" onClick={() => navigate(-1)}>
           <BackButton />
         </div>
-        <h2>{displayComposer?.complete_name}</h2>
+        <h2>{displayComposer.complete_name}</h2>
       </StyledTop>
       <ComposerDetails composer={displayComposer} />
-      <WorksList composerName={displayComposer?.complete_name} />
+      <WorksList composerName={displayComposer.complete_name} />
     </StyledContainer>
   );
 };

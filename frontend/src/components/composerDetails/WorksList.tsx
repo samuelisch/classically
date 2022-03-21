@@ -5,12 +5,17 @@ import { useAppSelector } from "../../reducers/hooks";
 import Work, { WorkType } from "./Work";
 import styled from "styled-components";
 
-const StyledList = styled.ul`
+type PropsType = {
+  composerName: string
+}
 
+const StyledList = styled.ul`
+  background: rgb(220, 220, 220);
+  border-top: 1px solid rgb(150, 150, 150);
+  border-bottom: 1px solid rgb(150, 150, 150);
 `
 
-
-const WorksList = ({ composerName }: any) => {
+const WorksList = ({ composerName }: PropsType) => {
   const navigate = useNavigate();
   const { dumpList } = useAppSelector((state) => state.dump);
   const [composerWorks, setComposerWorks] = useState<ComposerWorkType[] | []>([]);
