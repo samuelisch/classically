@@ -5,7 +5,6 @@ import { fetchAllComposers } from "./reducers/composersSlice";
 import { fetchEverything } from "./reducers/dumpSlice";
 import { useAppDispatch } from "./reducers/hooks";
 import { fetchPopularComposers } from "./reducers/popularSlice";
-import { Buffer } from "buffer";
 
 import Router from "./Router";
 
