@@ -1,21 +1,18 @@
 import styled from "styled-components";
 import { ComposerType } from "../../reducers/composersSlice";
-import { listColor, showYear } from "../assets/utils";
+import { showYear } from "../assets/utils";
 
-type StyledProps = {
-  period: string
-}
-
-const StyledContainer = styled.div<StyledProps>`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 20px 0;
+  border-radius: 5px;
 
   .portraitContainer {
     width: 100px;
     height: 100px;
-    border: 5px solid ${props => listColor(props.period)};
     border-radius: 50%;
     overflow: hidden;
 
@@ -27,7 +24,6 @@ const StyledContainer = styled.div<StyledProps>`
   .dates {
     margin-top: 10px;
     font-size: 1.5rem;
-    color: grey;
   }
 
   .period {
@@ -43,7 +39,7 @@ const ComposerDetails = ({ composer }: PropsType) => {
   const { birth, death, portrait, epoch } = composer;
 
   return (
-    <StyledContainer period={epoch}>
+    <StyledContainer>
         <div className="portraitContainer">
           <img src={portrait} alt="composer portrait" />
         </div>
