@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import musicCall from "../musicCall";
+import musicCall from "../apiCalls/musicCall";
 
 export type ComposerType = {
   id: string;

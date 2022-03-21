@@ -1,4 +1,4 @@
-import musicCall from '../../musicCall';
+import musicCall from '../../apiCalls/musicCall';
 
 const Home = () => {
   const fetchWorks = async (id: string) => {

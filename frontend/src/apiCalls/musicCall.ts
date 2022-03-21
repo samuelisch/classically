@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const baseUrl = 'https://api.openopus.org'
-// const spotifyUrl = 'https://api.spotify.com/v1'
 
 const getEverything = async () => {
   const response = await axios.get(`${baseUrl}/work/dump.json`)

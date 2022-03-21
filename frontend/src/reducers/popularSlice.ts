@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import musicCall from "../musicCall";
+import musicCall from "../apiCalls/musicCall";
 import type { ComposerType } from "./composersSlice";
 
 type PopularState = {

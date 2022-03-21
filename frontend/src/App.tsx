@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createGlobalStyle } from "styled-components";
+import spotifyCall from "./apiCalls/spotifyCall";
 import { fetchAllComposers } from "./reducers/composersSlice";
 import { fetchEverything } from "./reducers/dumpSlice";
 import { useAppDispatch } from "./reducers/hooks";
 import { fetchPopularComposers } from "./reducers/popularSlice";
+import { Buffer } from "buffer";
 
 import Router from "./Router";
-
 
 const GlobalStyle = createGlobalStyle`
   :root,
@@ -25,6 +26,16 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => {
   const dispatch = useAppDispatch();
+
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    spotifyCall
+      .login()
+      .then(token => {
+        console.log(token);
+      })
+  }, [])
 
   useEffect(() => {
     dispatch(fetchEverything());
