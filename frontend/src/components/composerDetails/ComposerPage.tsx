@@ -1,21 +1,39 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
 import { ComposerType } from "../../reducers/composersSlice";
 import { useAppSelector } from "../../reducers/hooks";
 import { ReactComponent as BackButton } from "../assets/backButton.svg";
+import styled from "styled-components";
+
 import ComposerDetails from "./ComposerDetails";
-import WorksList from "./WorksList";
+import WorksList from "../works/WorksList";
+
 
 const StyledContainer = styled.div`
   position: relative;
   padding-bottom: 10px;
 `;
 
-const StyledTop = styled.div`
+const StyledSticky = styled.div`
   position: sticky;
   top: 0;
   background: rgb(240, 240, 240);
+  padding-bottom: 10px;
+
+  .portraitContainer {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+    }
+  }
+`
+
+const StyledTop = styled.div`
   padding: 5px;
   margin-bottom: 10px;
   display: flex;
@@ -75,12 +93,17 @@ const ComposerPage = () => {
 
   return (
     <StyledContainer>
-      <StyledTop>
-        <div className="svgContainer" onClick={() => navigate(-1)}>
-          <BackButton />
+      <StyledSticky>
+        <StyledTop>
+          <div className="svgContainer" onClick={() => navigate(-1)}>
+            <BackButton />
+          </div>
+          <h2>{displayComposer.complete_name}</h2>
+        </StyledTop>
+        <div className="portraitContainer">
+          <img src={displayComposer.portrait} alt="" />
         </div>
-        <h2>{displayComposer.complete_name}</h2>
-      </StyledTop>
+      </StyledSticky>
       <ComposerDetails composer={displayComposer} />
       <WorksList composerName={displayComposer.complete_name} />
     </StyledContainer>

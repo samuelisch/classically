@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 const StyledElement = styled.li`
@@ -20,9 +21,11 @@ export type WorkType = {
   subtitle: string
 }
 
-const Work = ({ genre, title, subtitle }: WorkType) => {
+const Work = ({ genre, title }: WorkType) => {
+  const navigate = useNavigate();
+
   return (
-    <StyledElement>
+    <StyledElement onClick={() => navigate(`${title}`)}>
       <StyledTitle>{title}</StyledTitle>
       <StyledGenre>{genre}</StyledGenre>
     </StyledElement>

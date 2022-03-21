@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { ComposerWorkType } from "../../reducers/dumpSlice";
 import { useAppSelector } from "../../reducers/hooks";
 import Work, { WorkType } from "./Work";
@@ -16,7 +15,6 @@ const StyledList = styled.ul`
 `
 
 const WorksList = ({ composerName }: PropsType) => {
-  const navigate = useNavigate();
   const { dumpList } = useAppSelector((state) => state.dump);
   const [composerWorks, setComposerWorks] = useState<ComposerWorkType[] | []>([]);
 

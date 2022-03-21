@@ -7,22 +7,10 @@ const StyledContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 0;
+  padding-bottom: 20px;
   border-radius: 5px;
 
-  .portraitContainer {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-    }
-  }
-
   .dates {
-    margin-top: 10px;
     font-size: 1.5rem;
   }
 
@@ -36,13 +24,10 @@ type PropsType = {
 }
 
 const ComposerDetails = ({ composer }: PropsType) => {
-  const { birth, death, portrait, epoch } = composer;
+  const { birth, death, epoch } = composer;
 
   return (
     <StyledContainer>
-        <div className="portraitContainer">
-          <img src={portrait} alt="" />
-        </div>
         <div className="dates">
           <span>{showYear(birth)} - {death ? showYear(death) : ""}</span>
         </div>
