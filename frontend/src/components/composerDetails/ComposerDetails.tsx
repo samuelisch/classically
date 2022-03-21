@@ -41,7 +41,7 @@ const ComposerDetails = ({ composer }: PropsType) => {
   return (
     <StyledContainer>
         <div className="portraitContainer">
-          <img src={portrait} alt="composer portrait" />
+          <img src={portrait} alt="" />
         </div>
         <div className="dates">
           <span>{showYear(birth)} - {death ? showYear(death) : ""}</span>
