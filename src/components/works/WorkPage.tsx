@@ -65,6 +65,10 @@ const StyledDetails = styled.div`
     .composerName {
       font-size: 1.5rem;
     }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 `
 
@@ -105,7 +109,7 @@ const WorkPage = () => {
           </StyledTop>
           <StyledDetails>
             <h1>{title}</h1>
-            <div className="composerDetails">
+            <div className="composerDetails" onClick={() => navigate(`/composer/${selectedComposer.id}`)}>
               <div className="portraitContainer">
                 <img src={selectedComposer.portrait} alt="" />
               </div>

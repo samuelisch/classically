@@ -6,6 +6,7 @@ import Timeline from "./components/timeline/Timeline";
 import PopularList from "./components/popular/PopularList";
 import ComposerPage from "./components/composerDetails/ComposerPage";
 import WorkPage from "./components/works/WorkPage";
+import Search from "./components/search/Search";
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
           <Route path="/popular" element={<PopularList />} />
           <Route path="/composer/:id" element={<ComposerPage />} />
           <Route path="/composer/:id/:title" element={<WorkPage />} />
+          <Route path="/search" element={<Search />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

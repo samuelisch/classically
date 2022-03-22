@@ -36,7 +36,7 @@ const Navbar = () => {
           <StyledLink to="/timeline">
             <li>Timeline</li>
           </StyledLink>
-          <StyledLink to="">
+          <StyledLink to="/search">
             <li>Search</li>
           </StyledLink>
       </StyledList>
