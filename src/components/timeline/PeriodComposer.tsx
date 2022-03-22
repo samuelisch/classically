@@ -12,6 +12,7 @@ const StyledLi = styled.li`
   justify-content: space-between;
   align-items: center;
   background: rgb(240, 240, 240);
+  transition: background: .1s;
 
   &:first-of-type {
     border-top-left-radius: 10px;
@@ -20,6 +21,11 @@ const StyledLi = styled.li`
   &:last-of-type {
     border-bottom-left-radius: 10px;
     border-bottom: none;
+  }
+
+  &:hover {
+    background: rgb(220, 220, 220);
+    cursor: pointer;
   }
 `
 

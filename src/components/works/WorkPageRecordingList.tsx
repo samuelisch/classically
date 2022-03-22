@@ -9,14 +9,19 @@ type PropTypes = {
   title: string;
 };
 
-const StyledContainer = styled.div`
-  background: rgb(220, 220, 220);
+const StyledEmpty = styled.div`
+  font-size: 2rem;
+  text-align: center;
+`
+
+const StyledList = styled.ul`
   border-top: 1px solid rgb(150, 150, 150);
   border-bottom: 1px solid rgb(150, 150, 150);
 `;
 
 const WorkPageRecordingList = ({ selectedComposer, title }: PropTypes) => {
   const [workTracks, setWorkTracks] = useState<WorkType[]>([]);
+  const [loaded, setLoaded] = useState(false);
 
   const normalizeString = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
@@ -38,6 +43,7 @@ const WorkPageRecordingList = ({ selectedComposer, title }: PropTypes) => {
             };
           });
           setWorkTracks(formattedTracks);
+          setLoaded(true)
         });
     }
   }, [selectedComposer, title]);
@@ -65,10 +71,14 @@ const WorkPageRecordingList = ({ selectedComposer, title }: PropTypes) => {
     />
   ));
 
-  if (workTracks.length) {
-    return <StyledContainer>{allTracks}</StyledContainer>;
+  if (!loaded) {
+    return <h1>Loading ...</h1>
+  }
+
+  if (!sortedTracks.length) {
+    return <StyledEmpty><span>No tracks available :(</span></StyledEmpty>
   } else {
-    return null;
+    return <StyledList>{allTracks}</StyledList>;
   }
 };
 

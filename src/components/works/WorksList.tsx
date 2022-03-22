@@ -9,7 +9,6 @@ type PropsType = {
 }
 
 const StyledList = styled.ul`
-  background: rgb(220, 220, 220);
   border-top: 1px solid rgb(150, 150, 150);
   border-bottom: 1px solid rgb(150, 150, 150);
 `

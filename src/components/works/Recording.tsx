@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import {ReactComponent as PlayButton} from '../assets/playButton.svg'
+import { ReactComponent as PauseButton} from '../assets/pauseButton.svg'
 import styled from "styled-components";
 
 export type WorkType = {
@@ -11,10 +13,20 @@ export type WorkType = {
   previewSound: string, // preview_url
 }
 
+const StyledElement = styled.li`
+  background: rgb(220, 220, 220);
+  transition: background .1s;
+
+  &:hover {
+    background: rgb(200, 200, 200);
+    cursor: pointer;
+  }
+`
+
 const StyledContainer = styled.div`
   padding: 10px;
   margin-left: 5px;
-  border-bottom: 1px solid rgb(200, 200, 200);
+  border-bottom: 1px solid rgb(180, 180, 180);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,20 +35,26 @@ const StyledContainer = styled.div`
 const StyledImgContainer = styled.div`
   width: 50px;
   height: 50px;
-  border: 1px solid black;
+  border: 1px solid rgb(180, 180, 180);
   border-radius: 5px;
   overflow: hidden;
   flex-shrink: 0;
   margin-right: 10px;
+  transition: box-shadow .2s;
 
   img {
     width: 100%;
     height: 100%;
   }
+
+  &:hover {
+    box-shadow: 2px 2px 2px rgb(120, 120, 120);
+  }
 `
 
 const StyledDetails = styled.div`
   display: flex;
+  padding: 0 5px;
 
   .albumName {
     font-size: 1.3rem;
@@ -49,7 +67,20 @@ const StyledDetails = styled.div`
 `
 
 const StyledPreview = styled.div`
-  
+  margin: 0 10px;
+
+  button {
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    border: none;
+    background: inherit;
+    border-radius: 50%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `
 
 const Recording = ({ albumName, albumLink, albumImg, trackLink, trackName, previewSound }: WorkType) => {
@@ -80,22 +111,26 @@ const Recording = ({ albumName, albumLink, albumImg, trackLink, trackName, previ
   }, [audio]);
 
   return (
-    <StyledContainer>
-      <StyledDetails>
-      <StyledImgContainer>
-        <img src={albumImg} alt="" />
-      </StyledImgContainer>
-        <div className="titles">
-          <p className='albumName'>{albumName}</p>
-          <p className='trackName'>{trackName}</p>
-        </div>
-      </StyledDetails>
-      {previewSound &&
-        <StyledPreview>
-          <button type="button" onClick={toggleAudio}>{audioPlaying ? "Pause" : "Play"}</button>
-        </StyledPreview>
-      }
-    </StyledContainer>
+    <StyledElement>
+      <StyledContainer>
+        <StyledDetails>
+        <StyledImgContainer>
+          <img src={albumImg} alt="" />
+        </StyledImgContainer>
+          <div className="titles">
+            <p className='albumName'>{albumName}</p>
+            <p className='trackName'>{trackName}</p>
+          </div>
+        </StyledDetails>
+        {previewSound &&
+          <StyledPreview>
+            <button type="button" onClick={toggleAudio}>
+              {audioPlaying ? <PauseButton /> : <PlayButton />}
+            </button>
+          </StyledPreview>
+        }
+      </StyledContainer>
+    </StyledElement>
   )
 }
 

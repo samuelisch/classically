@@ -15,6 +15,12 @@ const StyledLi = styled.li`
   justify-content: flex-start;
   align-items: flex-start;
   background: rgb(240, 240, 240);
+  transition: background .1s;
+
+  &:hover {
+    background: rgb(220, 220, 220);
+    cursor: pointer;
+  }
 `
 
 const StyledDetails = styled.div`

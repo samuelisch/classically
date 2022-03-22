@@ -2,6 +2,16 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 const StyledElement = styled.li`
+  background: rgb(220, 220, 220);
+  transition: background: .1s;
+
+  &:hover {
+    background: rgb(200, 200, 200);
+    cursor: pointer;
+  }
+`
+
+const StyledContainer = styled.div`
   padding: 5px 0;
   margin: 0 5px;
   border-bottom: 1px solid rgb(180, 180, 180);
@@ -26,8 +36,10 @@ const Work = ({ genre, title }: WorkType) => {
 
   return (
     <StyledElement onClick={() => navigate(`${title}`)}>
-      <StyledTitle>{title}</StyledTitle>
-      <StyledGenre>{genre}</StyledGenre>
+      <StyledContainer>
+        <StyledTitle>{title}</StyledTitle>
+        <StyledGenre>{genre}</StyledGenre>
+      </StyledContainer>
     </StyledElement>
   )
 }
