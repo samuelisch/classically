@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createGlobalStyle } from "styled-components";
 import spotifyCall from "./apiCalls/spotifyCall";
 import { fetchAllComposers } from "./reducers/composersSlice";
@@ -26,14 +26,8 @@ const GlobalStyle = createGlobalStyle`
 const App = () => {
   const dispatch = useAppDispatch();
 
-  const [token, setToken] = useState('');
-
   useEffect(() => {
-    spotifyCall
-      .getToken()
-      .then(token => {
-        console.log(token);
-      })
+    spotifyCall.getToken()
   }, [])
 
   useEffect(() => {

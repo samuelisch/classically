@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useAppSelector } from "../../reducers/hooks";
 import { useEffect, useState } from "react";
 import { ComposerType } from "../../reducers/composersSlice";
+import WorkPageRecordingList from "./WorkPageRecordingList";
 
 const StyledContainer = styled.div`
 
@@ -17,7 +18,6 @@ const StyledSticky = styled.div`
 `
 
 const StyledTop = styled.div`
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
 
@@ -38,6 +38,7 @@ const StyledTop = styled.div`
 const StyledDetails = styled.div`
   h1 {
     font-size: 1.7rem;
+    margin: 10px 0;
   }
 
   .composerDetails {
@@ -61,12 +62,6 @@ const StyledDetails = styled.div`
       font-size: 1.5rem;
     }
   }
-`
-
-const StyledRecordings = styled.div`
-  background: rgb(220, 220, 220);
-  border-top: 1px solid rgb(150, 150, 150);
-  border-bottom: 1px solid rgb(150, 150, 150);
 `
 
 const defaultComposer = {
@@ -94,32 +89,34 @@ const WorkPage = () => {
     }
   }, [id, composerList])
 
-  return (
-    <StyledContainer>
-      <StyledSticky>
-        <StyledTop>
-          <div className="svgContainer" onClick={() => navigate(-1)}>
-            <BackButton />
-          </div>
-          <h2>Recordings</h2>
-        </StyledTop>
-        <StyledDetails>
-          <h1>{title}</h1>
-          <div className="composerDetails">
-            <div className="portraitContainer">
-              <img src={selectedComposer.portrait} alt="" />
+  if (selectedComposer && title) {
+    return (
+      <StyledContainer>
+        <StyledSticky>
+          <StyledTop>
+            <div className="svgContainer" onClick={() => navigate(-1)}>
+              <BackButton />
             </div>
-            <div>
-              <span className="composerName">{selectedComposer.complete_name}</span>
+            <h2>Recordings</h2>
+          </StyledTop>
+          <StyledDetails>
+            <h1>{title}</h1>
+            <div className="composerDetails">
+              <div className="portraitContainer">
+                <img src={selectedComposer.portrait} alt="" />
+              </div>
+              <div>
+                <span className="composerName">{selectedComposer.complete_name}</span>
+              </div>
             </div>
-          </div>
-        </StyledDetails>
-      </StyledSticky>
-      <StyledRecordings>
-        Hello
-      </StyledRecordings>
-    </StyledContainer>
-  )
+          </StyledDetails>
+        </StyledSticky>
+        <WorkPageRecordingList selectedComposer={selectedComposer} title={title} />
+      </StyledContainer>
+    )
+  } else {
+    return null
+  }
 }
 
 export default WorkPage
