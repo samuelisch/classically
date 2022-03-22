@@ -1,25 +1,22 @@
-// import axios from "axios";
+import axios from "axios";
 
 const clientEncoded = process.env.REACT_APP_CLIENT_ENCODED;
 const tokenUrl = 'https://accounts.spotify.com/api/token'
 // const searchUrl = 'https://api.spotify.com/v1/search'
 
-const login = async () => {
-  const response = await fetch(tokenUrl, {
-    method: 'POST',
+const getToken = async () => {
+  const response = await axios.post(tokenUrl, 'grant_type=client_credentials', {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': `Basic ${clientEncoded}`
     },
-    body: 'grant_type=client_credentials'
   })
-  const data = await response.json()
-  return data
+  return response.data
 
 };
 
 const spotifyCall = {
-  login,
+  getToken,
 };
 
 export default spotifyCall;

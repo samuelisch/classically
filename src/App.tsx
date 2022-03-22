@@ -30,7 +30,7 @@ const App = () => {
 
   useEffect(() => {
     spotifyCall
-      .login()
+      .getToken()
       .then(token => {
         console.log(token);
       })
