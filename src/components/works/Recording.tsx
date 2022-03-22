@@ -69,7 +69,7 @@ const Recording = ({ albumName, albumLink, albumImg, trackLink, trackName, previ
   useEffect(() => {
     audioPlaying ? audio.play() : audio.pause();
     },
-    [audioPlaying]
+    [audioPlaying, audio]
   );
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const Recording = ({ albumName, albumLink, albumImg, trackLink, trackName, previ
     return () => {
       audio.removeEventListener('ended', () => setAudioPlaying(false));
     };
-  }, []);
+  }, [audio]);
 
   return (
     <StyledContainer>
