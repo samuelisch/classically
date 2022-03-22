@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import {ReactComponent as PlayButton} from '../assets/playButton.svg'
+import { ReactComponent as PlayButton } from '../assets/playButton.svg'
 import { ReactComponent as PauseButton} from '../assets/pauseButton.svg'
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export type WorkType = {
   id: string, // id

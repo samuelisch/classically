@@ -7,6 +7,11 @@ const getEverything = async () => {
   return response.data
 }
 
+const searchMusic = async (str: string) => {
+  const response = await axios.get(`${baseUrl}/omnisearch/${str}/0.json`)
+  return response.data
+}
+
 const getAllComposers = async () => {
   const response = await axios.get(`${baseUrl}/composer/list/epoch/all.json`)
   return response.data
@@ -32,7 +37,8 @@ const musicCall = {
   getPopularComposers,
   getComposer,
   getWorks,
-  getEverything
+  getEverything,
+  searchMusic
 }
 
 export default musicCall

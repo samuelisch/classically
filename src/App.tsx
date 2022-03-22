@@ -30,6 +30,8 @@ const App = () => {
     spotifyCall.getToken()
   }, [])
 
+  // remove dispatch dump, add cleanup for api calls upon re-render
+  // useContext for dark mode
   useEffect(() => {
     dispatch(fetchEverything());
     dispatch(fetchAllComposers());

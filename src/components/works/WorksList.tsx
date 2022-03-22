@@ -14,12 +14,14 @@ const StyledList = styled.ul`
 `
 
 const WorksList = ({ composerName }: PropsType) => {
+  // use composer slice instead of composer dump
   const { dumpList } = useAppSelector((state) => state.dump);
   const [composerWorks, setComposerWorks] = useState<ComposerWorkType[] | []>([]);
 
   useEffect(() => {
     if (composerName) {
       const selectedComposer = dumpList.find(composer => composer.complete_name === composerName)
+      // after finding composer, call list works by composerId
       if (selectedComposer) {
         setComposerWorks(selectedComposer.works)
       }
