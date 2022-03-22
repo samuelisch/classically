@@ -6,10 +6,6 @@ import { useEffect, useState } from "react";
 import { ComposerType } from "../../reducers/composersSlice";
 import WorkPageRecordingList from "./WorkPageRecordingList";
 
-const StyledContainer = styled.div`
-
-`
-
 const StyledSticky = styled.div`
   position: sticky;
   top: 0;
@@ -91,7 +87,7 @@ const WorkPage = () => {
 
   if (selectedComposer && title) {
     return (
-      <StyledContainer>
+      <>
         <StyledSticky>
           <StyledTop>
             <div className="svgContainer" onClick={() => navigate(-1)}>
@@ -112,7 +108,7 @@ const WorkPage = () => {
           </StyledDetails>
         </StyledSticky>
         <WorkPageRecordingList selectedComposer={selectedComposer} title={title} />
-      </StyledContainer>
+      </>
     )
   } else {
     return null

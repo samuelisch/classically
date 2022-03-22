@@ -9,10 +9,6 @@ type PropTypes = {
   composerList: ComposerType[]
 }
 
-const StyledContainer = styled.div`
-
-`
-
 const PeriodList = ({ periods, composerList }: PropTypes) => {
   const allPeriods = periods.map((period, i) => {
     const periodComposers = composerList
@@ -28,9 +24,9 @@ const PeriodList = ({ periods, composerList }: PropTypes) => {
   })
 
   return (
-    <StyledContainer>
+    <>
       {allPeriods}
-    </StyledContainer>
+    </>
   )
 }
 
