@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {ReactComponent as PlayButton} from '../assets/playButton.svg'
 import { ReactComponent as PauseButton} from '../assets/pauseButton.svg'
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export type WorkType = {
   id: string, // id
@@ -30,6 +31,11 @@ const StyledContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  a {
+    color: rgb(20, 20, 20);
+    text-decoration: none;
+  }
 `
 
 const StyledImgContainer = styled.div`
@@ -112,24 +118,28 @@ const Recording = ({ albumName, albumLink, albumImg, trackLink, trackName, previ
 
   return (
     <StyledElement>
-      <StyledContainer>
-        <StyledDetails>
-        <StyledImgContainer>
-          <img src={albumImg} alt="" />
-        </StyledImgContainer>
-          <div className="titles">
-            <p className='albumName'>{albumName}</p>
-            <p className='trackName'>{trackName}</p>
-          </div>
-        </StyledDetails>
-        {previewSound &&
-          <StyledPreview>
-            <button type="button" onClick={toggleAudio}>
-              {audioPlaying ? <PauseButton /> : <PlayButton />}
-            </button>
-          </StyledPreview>
-        }
-      </StyledContainer>
+        <StyledContainer>
+          <StyledDetails>
+          <a href={albumLink} target="_blank" rel='noopener noreferrer'>
+          <StyledImgContainer>
+            <img src={albumImg} alt="" />
+          </StyledImgContainer>
+          </a>
+          <a href={trackLink} target="_blank" rel="noopener noreferrer">
+            <div className="titles">
+              <p className='albumName'>{albumName}</p>
+              <p className='trackName'>{trackName}</p>
+            </div>
+          </a>
+          </StyledDetails>
+          {previewSound &&
+            <StyledPreview>
+              <button type="button" onClick={toggleAudio}>
+                {audioPlaying ? <PauseButton /> : <PlayButton />}
+              </button>
+            </StyledPreview>
+          }
+        </StyledContainer>
     </StyledElement>
   )
 }
