@@ -1,15 +1,23 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as BackButton } from "../assets/backButton.svg";
-import styled from "styled-components";
 import { useAppSelector } from "../../reducers/hooks";
 import { useEffect, useState } from "react";
 import { ComposerType } from "../../reducers/composersSlice";
+import styled from "styled-components";
+import { listColor } from '../assets/utils';
+
 import WorkPageRecordingList from "./WorkPageRecordingList";
 
-const StyledSticky = styled.div`
+type StyledProps = {
+  period: string
+}
+
+
+const StyledSticky = styled.div<StyledProps>`
   position: sticky;
   top: 0;
-  background: rgb(240, 240, 240);
+  background: ${props => listColor(props.period)};
+  color: rgb(240, 240, 240);
   padding: 5px 5px 10px;
 `
 
@@ -42,8 +50,8 @@ const StyledDetails = styled.div`
     align-items: center;
 
     .portraitContainer {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       overflow: hidden;
       margin-right: 10px;
@@ -88,10 +96,10 @@ const WorkPage = () => {
   if (selectedComposer && title) {
     return (
       <>
-        <StyledSticky>
+        <StyledSticky period={selectedComposer.epoch}>
           <StyledTop>
             <div className="svgContainer" onClick={() => navigate(-1)}>
-              <BackButton />
+              <BackButton fill='rgb(240, 240, 240)' />
             </div>
             <h2>Recordings</h2>
           </StyledTop>

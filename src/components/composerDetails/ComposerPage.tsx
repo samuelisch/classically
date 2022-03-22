@@ -4,20 +4,25 @@ import { ComposerType } from "../../reducers/composersSlice";
 import { useAppSelector } from "../../reducers/hooks";
 import { ReactComponent as BackButton } from "../assets/backButton.svg";
 import styled from "styled-components";
+import { listColor } from '../assets/utils';
 
 import ComposerDetails from "./ComposerDetails";
 import WorksList from "../works/WorksList";
 
+type StyledProps = {
+  period: string
+}
 
 const StyledContainer = styled.div`
   position: relative;
   padding-bottom: 10px;
 `;
 
-const StyledSticky = styled.div`
+const StyledSticky = styled.div<StyledProps>`
   position: sticky;
   top: 0;
-  background: rgb(240, 240, 240);
+  background: ${props => listColor(props.period)};
+  color: rgb(240, 240, 240);
   padding-bottom: 10px;
 
   .portraitContainer {
@@ -93,10 +98,10 @@ const ComposerPage = () => {
 
   return (
     <StyledContainer>
-      <StyledSticky>
+      <StyledSticky period={displayComposer.epoch}>
         <StyledTop>
           <div className="svgContainer" onClick={() => navigate(-1)}>
-            <BackButton />
+            <BackButton fill="rgb(240, 240, 240)" />
           </div>
           <h2>{displayComposer.complete_name}</h2>
         </StyledTop>

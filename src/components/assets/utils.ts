@@ -25,7 +25,7 @@ export const listColor = (period: string) => {
     case '21st Century':
       return '#8b8000'
     default:
-      return 'rgb(240, 240, 240'
+      return 'rgb(240, 240, 240)'
   }
 }
 
