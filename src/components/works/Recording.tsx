@@ -3,7 +3,7 @@ import { ReactComponent as PlayButton } from '../assets/playButton.svg'
 import { ReactComponent as PauseButton} from '../assets/pauseButton.svg'
 import styled from "styled-components";
 
-export type WorkType = {
+export type RecordingPropsType = {
   id: string, // id
   albumName: string, // album.name
   albumLink: string, // album.external_urls.spotify
@@ -88,7 +88,7 @@ const StyledPreview = styled.div`
   }
 `
 
-const Recording = ({ albumName, albumLink, albumImg, trackLink, trackName, previewSound }: WorkType) => {
+const Recording = ({ albumName, albumLink, albumImg, trackLink, trackName, previewSound }: RecordingPropsType) => {
   const [audio, setAudio] = useState(new Audio());
   const [audioPlaying, setAudioPlaying] = useState(false);
 

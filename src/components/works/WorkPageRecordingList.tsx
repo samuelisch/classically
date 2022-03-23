@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import spotifyCall from "../../apiCalls/spotifyCall";
 import { ComposerType } from "../../reducers/composersSlice";
-import Recording, { WorkType } from "./Recording";
+import Recording, { RecordingPropsType } from "./Recording";
 
 type PropTypes = {
   selectedComposer: ComposerType;
@@ -20,7 +20,7 @@ const StyledList = styled.ul`
 `;
 
 const WorkPageRecordingList = ({ selectedComposer, title }: PropTypes) => {
-  const [workTracks, setWorkTracks] = useState<WorkType[]>([]);
+  const [workTracks, setWorkTracks] = useState<RecordingPropsType[]>([]);
   const [loaded, setLoaded] = useState(false);
 
   const normalizeString = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -31,7 +31,7 @@ const WorkPageRecordingList = ({ selectedComposer, title }: PropTypes) => {
         .searchTrack(encodeURIComponent(normalizeString(title)))
         .then((response) => {
           const tracks = response.tracks.items;
-          const formattedTracks = tracks.map((track: any): WorkType => {
+          const formattedTracks = tracks.map((track: any): RecordingPropsType => {
             return {
               id: track.id,
               albumName: track.album.name,
@@ -48,7 +48,7 @@ const WorkPageRecordingList = ({ selectedComposer, title }: PropTypes) => {
     }
   }, [selectedComposer, title]);
 
-  const filteredTracks = workTracks.filter((track: WorkType) => {
+  const filteredTracks = workTracks.filter((track: RecordingPropsType) => {
     const normalizedTitle = normalizeString(title)
     return (
       track.trackName.includes(normalizedTitle.split(" ")[0].replace(/\W/g, '')) ||
@@ -58,7 +58,7 @@ const WorkPageRecordingList = ({ selectedComposer, title }: PropTypes) => {
 
   const sortedTracks = filteredTracks.sort((a, b) => b.previewSound ? 1 : -1)
 
-  const allTracks = sortedTracks.map((track: WorkType) => (
+  const allTracks = sortedTracks.map((track: RecordingPropsType) => (
     <Recording
       key={track.id}
       id={track.id}

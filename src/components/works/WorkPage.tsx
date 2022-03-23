@@ -12,7 +12,6 @@ type StyledProps = {
   period: string
 }
 
-
 const StyledSticky = styled.div<StyledProps>`
   position: sticky;
   top: 0;
