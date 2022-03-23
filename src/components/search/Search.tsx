@@ -40,7 +40,6 @@ const Search = () => {
           } else {
             setEmpty(false)
             const filteredResults = response.results.filter((result: ResultType) => result.work)
-            console.log(filteredResults)
             setResults(filteredResults)
           }
         }

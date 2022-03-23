@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { listColor, listYears } from '../assets/utils'
+import { HashLink } from 'react-router-hash-link'
 
 type StyledProps = {
   period: string
@@ -16,7 +17,10 @@ const StyledContainer = styled.div`
 
   &:hover {
     cursor: pointer;
-    background: rgb(200, 200, 200);
+  }
+
+  a {
+    text-decoration: none;
   }
 `
 
@@ -31,13 +35,16 @@ const StyledText = styled.div<StyledProps>`
 
 const StyledYears = styled.div`
   font-size: 1.1rem;
+  color: rgb(20, 20, 20);
 `
 
 const NavPeriod = ({ text }: PropTypes) => {
   return (
     <StyledContainer>
-      <StyledText period={text}>{text}</StyledText>
-      <StyledYears>{listYears(text)}</StyledYears>
+      <HashLink smooth to={`#${text}`}>
+        <StyledText period={text}>{text}</StyledText>
+        <StyledYears>{listYears(text)}</StyledYears>
+      </HashLink>
     </StyledContainer>
   )
 }

@@ -8,6 +8,8 @@ const StyledNav = styled.nav`
 `
 
 const StyledList = styled.ul`
+  position: sticky;
+  top: 10px;
   display: flex;
   flex-direction: column;
 

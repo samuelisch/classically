@@ -8,8 +8,8 @@ const StyledContainer = styled.div`
 
 const StyledContent = styled.div`
   flex: 1;
-  height: 100vh;
-  overflow: scroll;
+  min-height: 100vh;
+  overflow-x: hidden;
 `
 
 const Main = () => {
