@@ -6,6 +6,7 @@ const StyledContainer = styled.div`
   position: sticky;
   top: 0;
   background: rgb(240, 240, 240);
+  z-index: 5;
 `
 
 const StyledList = styled.ul`

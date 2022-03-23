@@ -14,15 +14,14 @@ const StyledContainer = styled.div<StyledProps>`
   background: ${props => listColor(props.period)};
 
   .periodTitle {
-    padding: 4px 10px;
+    padding: 5px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .periodDetails {
-      display: flex;
-      align-items: center;
-    }
+    background: ${props => listColor(props.period)};
+    position: sticky;
+    top: 64px;
+    z-index: 2;
 
     h4 {
       font-size: 1.5rem;
