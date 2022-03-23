@@ -1,6 +1,6 @@
 import { ComposerType } from '../../reducers/composersSlice';
 import styled from 'styled-components';
-import { showYear } from '../assets/utils';
+import { mode, showYear } from '../assets/utils';
 import { useNavigate } from 'react-router-dom';
 
 const StyledLi = styled.li`
@@ -11,8 +11,8 @@ const StyledLi = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgb(240, 240, 240);
-  transition: background: .1s;
+  background: ${mode.background};
+  transition: background: .2s;
 
   &:first-of-type {
     border-top-left-radius: 10px;
@@ -24,7 +24,7 @@ const StyledLi = styled.li`
   }
 
   &:hover {
-    background: rgb(220, 220, 220);
+    background: rgb(60, 60, 60);
     cursor: pointer;
   }
 `

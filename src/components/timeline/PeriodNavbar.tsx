@@ -1,11 +1,12 @@
 import styled from 'styled-components'
+import { mode } from '../assets/utils'
 
 import NavPeriod from './NavPeriod'
 
 const StyledContainer = styled.div`
   position: sticky;
   top: 0;
-  background: rgb(240, 240, 240);
+  background: ${mode.background};
   z-index: 5;
 `
 

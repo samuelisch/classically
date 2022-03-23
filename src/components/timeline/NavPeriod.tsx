@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { listColor, listYears } from '../assets/utils'
+import { listColor, listYears, mode } from '../assets/utils'
 import { HashLink } from 'react-router-hash-link'
 
 type StyledProps = {
@@ -35,7 +35,7 @@ const StyledText = styled.div<StyledProps>`
 
 const StyledYears = styled.div`
   font-size: 1.1rem;
-  color: rgb(20, 20, 20);
+  color: ${mode.color};
 `
 
 const NavPeriod = ({ text }: PropTypes) => {

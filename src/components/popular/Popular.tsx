@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ComposerType } from "../../reducers/composersSlice";
-import { listColor } from "../assets/utils";
+import { listColor, mode } from "../assets/utils";
 
 type StyledProps = {
   period: string
@@ -14,11 +14,11 @@ const StyledLi = styled.li`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  background: rgb(240, 240, 240);
+  background: ${mode.background};
   transition: background .1s;
 
   &:hover {
-    background: rgb(220, 220, 220);
+    background: rgb(60, 60, 60);
     cursor: pointer;
   }
 `

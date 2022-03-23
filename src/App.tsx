@@ -4,6 +4,7 @@ import spotifyCall from "./apiCalls/spotifyCall";
 import { fetchAllComposers } from "./reducers/composersSlice";
 import { useAppDispatch } from "./reducers/hooks";
 import { fetchPopularComposers } from "./reducers/popularSlice";
+import { mode } from './components/assets/utils'
 
 import Router from "./Router";
 
@@ -12,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-size: 10px;
     font-family: Helvetica;
-    background: rgb(240, 240, 240);
+    background: ${mode.background};
+    color: ${mode.color};
   }
 
   * {

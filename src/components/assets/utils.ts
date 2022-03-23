@@ -1,3 +1,22 @@
+export let mode = {
+  color: "rgb(240, 240, 240)",
+  background: 'rgb(40, 40, 40)'
+}
+
+export const nightMode = (night:boolean) => {
+  if (night) {
+    mode = {
+      background: 'rgb(40, 40, 40)',
+      color: 'rgb(240, 240, 240'
+    }
+  } else {
+    mode = {
+      background: 'rgb(240, 240, 240)',
+      color: 'rgb(20, 20, 20)'
+    }
+  }
+}
+
 export const showYear = (date: string) => {
   return date.split('-')[0]
 }

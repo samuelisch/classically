@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { mode } from '../assets/utils'
 import { WorkType } from './WorkPage'
 
 const StyledElement = styled.li`
-  background: rgb(220, 220, 220);
+  background: ${mode.background};
   transition: background: .1s;
 
   &:hover {
-    background: rgb(200, 200, 200);
+    background: rgb(60, 60, 60);
     cursor: pointer;
   }
 `

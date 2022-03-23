@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ReactComponent as PlayButton } from '../assets/playButton.svg'
 import { ReactComponent as PauseButton} from '../assets/pauseButton.svg'
 import styled from "styled-components";
+import { mode } from "../assets/utils";
 
 export type RecordingPropsType = {
   id: string, // id
@@ -14,11 +15,11 @@ export type RecordingPropsType = {
 }
 
 const StyledElement = styled.li`
-  background: rgb(220, 220, 220);
+  background: ${mode.background};
   transition: background .1s;
 
   &:hover {
-    background: rgb(200, 200, 200);
+    background: rgb(60, 60, 60);
     cursor: pointer;
   }
 `
@@ -32,7 +33,7 @@ const StyledContainer = styled.div`
   align-items: center;
 
   a {
-    color: rgb(20, 20, 20);
+    color: ${mode.color};
     text-decoration: none;
   }
 `
@@ -79,7 +80,7 @@ const StyledPreview = styled.div`
     height: 30px;
     font-size: 1.5rem;
     border: none;
-    background: inherit;
+    background: ${mode.color};
     border-radius: 50%;
 
     &:hover {

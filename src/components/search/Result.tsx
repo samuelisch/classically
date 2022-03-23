@@ -12,7 +12,7 @@ const StyledElement = styled.li`
   }
 
   &:hover {
-    background: rgb(220, 220, 220);
+    background: rgb(60, 60, 60);
     cursor: pointer;
   }
 `
@@ -23,7 +23,7 @@ const StyledTitle = styled.p`
 
 const StyledDescription = styled.div`
   font-size: 1.1rem;
-  color: rgb(80, 80, 80);
+  color: rgb(150, 150, 150);
 `
 
 type PropsType = {

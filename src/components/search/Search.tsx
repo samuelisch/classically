@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import musicCall from "../../apiCalls/musicCall";
+import { mode } from "../assets/utils";
 
 import ResultList, { ResultType } from "./ResultList";
 
@@ -15,8 +16,14 @@ const StyledInput = styled.input`
   max-width: 500px;
   padding: 5px 10px;
   border: none;
-  border-radius: 15px;
   margin: 0 auto;
+  background: inherit;
+  border-bottom: 1px solid rgb(150, 150, 150);
+  color: ${mode.color};
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const Search = () => {

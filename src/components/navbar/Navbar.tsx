@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
 import { IconContext } from 'react-icons'
-import { GrHomeRounded } from 'react-icons/gr'
+import { AiOutlineHome } from 'react-icons/ai'
 import { GiMusicalScore, GiBackwardTime } from "react-icons/gi";
 import { BiSearch } from 'react-icons/bi'
+import { mode } from '../assets/utils'
 import styled from 'styled-components'
 
 const StyledNav = styled.nav`
   flex: 1;
   max-width: 120px;
-  background: rgb(240, 240, 240);
+  background: ${mode.background};
   padding: 0 10px;
   border-right: 1px solid black;
 `
@@ -61,7 +62,7 @@ const StyledLink = styled(Link)`
 const IconContextProvider = ({className, children}:any) => <IconContext.Provider value={{className}}>{children}</IconContext.Provider>;
 
 const StyledIconContext = styled(IconContextProvider)`
-  color: rgb(20, 20, 20);
+  color: ${mode.color};
   font-size: 2.3rem;
 `
 
@@ -73,7 +74,7 @@ const Navbar = () => {
           <div>
             <StyledLink to="/home">
               <li>
-                <GrHomeRounded />
+                <AiOutlineHome />
                 <span className="iconText">Home</span>
               </li>
             </StyledLink>
