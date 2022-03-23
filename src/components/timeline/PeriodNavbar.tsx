@@ -12,6 +12,13 @@ const StyledList = styled.ul`
   display: flex;
   margin: 0 auto;
   overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `
 
 type PropTypes = {
