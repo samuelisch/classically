@@ -82,21 +82,21 @@ const defaultComposer = {
 }
 
 const WorkPage = () => {
-  const { id, title } = useParams();
+  const { composerId, workId } = useParams();
   const navigate = useNavigate();
   const [selectedComposer, setSelectedComposer] = useState<ComposerType>(defaultComposer)
   const { composerList } = useAppSelector((state) => state.composers);
 
   useEffect(() => {
-    if (id) {
-      const selected = composerList.find(composer => composer.id === id)
+    if (composerId) {
+      const selected = composerList.find(composer => composer.id === composerId)
       if (selected) {
         setSelectedComposer(selected)
       }
     }
-  }, [id, composerList])
+  }, [composerId, composerList])
 
-  if (selectedComposer && title) {
+  if (selectedComposer && workId) {
     return (
       <>
         <StyledSticky period={selectedComposer.epoch}>

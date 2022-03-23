@@ -16,8 +16,8 @@ const Router = () => {
           <Route index element={<Home />} />
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/popular" element={<PopularList />} />
-          <Route path="/composer/:id" element={<ComposerPage />} />
-          <Route path="/composer/:id/:title" element={<WorkPage />} />
+          <Route path="/composer/:composerId" element={<ComposerPage />} />
+          <Route path="/composer/:composerId/:workId" element={<WorkPage />} />
           <Route path="/search" element={<Search />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />

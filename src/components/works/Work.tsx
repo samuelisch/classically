@@ -26,16 +26,17 @@ const StyledGenre = styled.span`
 `
 
 export type WorkType = {
+  id: string
   genre: string,
   title: string,
   subtitle: string
 }
 
-const Work = ({ genre, title }: WorkType) => {
+const Work = ({ id, genre, title }: WorkType) => {
   const navigate = useNavigate();
 
   return (
-    <StyledElement onClick={() => navigate(`${title}`)}>
+    <StyledElement onClick={() => navigate(`${id}`)}>
       <StyledContainer>
         <StyledTitle>{title}</StyledTitle>
         <StyledGenre>{genre}</StyledGenre>

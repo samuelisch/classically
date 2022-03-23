@@ -2,7 +2,7 @@ import musicCall from '../../apiCalls/musicCall';
 
 const Home = () => {
   const fetchWorks = async (id: string) => {
-    const data = await musicCall.getWorks(id);
+    const data = await musicCall.getWorksFromComposerId(id);
     console.log(data.works);
   }
 

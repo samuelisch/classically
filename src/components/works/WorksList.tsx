@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { ComposerWorkType } from "../../reducers/dumpSlice";
+import { ComposerType } from "../../reducers/composersSlice";
 import { useAppSelector } from "../../reducers/hooks";
 import Work, { WorkType } from "./Work";
 import styled from "styled-components";
+import musicCall from "../../apiCalls/musicCall";
 
 type PropsType = {
-  composerName: string
+  composerId: string
 }
 
 const StyledList = styled.ul`
@@ -13,24 +14,28 @@ const StyledList = styled.ul`
   border-bottom: 1px solid rgb(150, 150, 150);
 `
 
-const WorksList = ({ composerName }: PropsType) => {
-  // use composer slice instead of composer dump
-  const { dumpList } = useAppSelector((state) => state.dump);
-  const [composerWorks, setComposerWorks] = useState<ComposerWorkType[] | []>([]);
+const WorksList = ({ composerId }: PropsType) => {
+  const { composerList } = useAppSelector((state) => state.composers);
+  const [composerWorks, setComposerWorks] = useState<WorkType[] | []>([]);
 
   useEffect(() => {
-    if (composerName) {
-      const selectedComposer = dumpList.find(composer => composer.complete_name === composerName)
-      // after finding composer, call list works by composerId
+    if (composerId) {
+      const selectedComposer = composerList.find(composer => composer.id === composerId)
       if (selectedComposer) {
-        setComposerWorks(selectedComposer.works)
+        musicCall
+          .getWorksFromComposerId(composerId)
+          .then(response => {
+            console.log(response.works)
+            setComposerWorks(response.works)
+          })
       }
     }
-  }, [composerName, dumpList])
+  }, [composerId, composerList])
 
-  const listOfWorks = composerWorks.map((work: WorkType, i) => (
+  const listOfWorks = composerWorks.map((work: WorkType) => (
     <Work 
-      key={i}
+      key={work.id}
+      id={work.id}
       genre={work.genre}
       subtitle={work.subtitle}
       title={work.title}

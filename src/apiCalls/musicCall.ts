@@ -27,7 +27,7 @@ const getComposer = async (name:string) => {
   return response.data
 }
 
-const getWorks = async (id:string) => {
+const getWorksFromComposerId = async (id:string) => {
   const response = await axios.get(`${baseUrl}/work/list/composer/${id}/all.json`)
   return response.data
 }
@@ -36,7 +36,7 @@ const musicCall = {
   getAllComposers,
   getPopularComposers,
   getComposer,
-  getWorks,
+  getWorksFromComposerId,
   getEverything,
   searchMusic
 }

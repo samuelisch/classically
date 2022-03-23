@@ -69,7 +69,7 @@ const defaultComposer = {
 }
 
 const ComposerPage = () => {
-  const { id } = useParams();
+  const { composerId } = useParams();
   const navigate = useNavigate();
   const { composerList } = useAppSelector((state) => state.composers);
   const [displayComposer, setDisplayComposer] = useState<ComposerType>(defaultComposer);
@@ -85,12 +85,12 @@ const ComposerPage = () => {
 
   useEffect(() => {
     const selectedComposer = composerList.find(
-      (composer) => composer.id === id
+      (composer) => composer.id === composerId
     );
     if (selectedComposer) {
       setDisplayComposer(selectedComposer);
     }
-  }, [composerList, id]);
+  }, [composerList, composerId]);
 
   if (!loaded) {
     return <h1>Loading ...</h1>;
@@ -110,7 +110,7 @@ const ComposerPage = () => {
         </div>
       </StyledSticky>
       <ComposerDetails composer={displayComposer} />
-      <WorksList composerName={displayComposer.complete_name} />
+      <WorksList composerId={displayComposer.id} />
     </StyledContainer>
   );
 };
