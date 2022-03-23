@@ -38,6 +38,7 @@ const StyledContainer = styled.div<StyledProps>`
     a {
       color: rgb(240, 240, 240);
       text-decoration: none;
+      font-size: 1.1rem;
 
       &:hover {
         color: red;

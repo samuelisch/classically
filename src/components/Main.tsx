@@ -7,13 +7,12 @@ const StyledContainer = styled.div`
 `
 
 const StyledContent = styled.div`
-  flex: 7;
-  min-height: 100vh;
-  overflow-x: hidden;
+  flex: 8;
+  height: 100vh;
+  overflow: scroll;
 `
 
 const Main = () => {
-
   return (
     <StyledContainer>
       <Navbar />

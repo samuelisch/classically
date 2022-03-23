@@ -4,8 +4,8 @@ import { showYear } from '../assets/utils';
 import { useNavigate } from 'react-router-dom';
 
 const StyledLi = styled.li`
-  border-bottom: 1px solid rgb(100, 100, 100);
-  padding: 5px 10px;
+  border-bottom: 1px solid rgb(150, 150, 150);
+  padding: 5px 20px 5px 10px;
   flex: 1;
   font-size: 1.5rem;
   display: flex;
@@ -71,7 +71,7 @@ const Composer = ({ id, birth, name, portrait }:ComposerType) => {
         </span>
       </StyledDetails>
       <StyledDates>
-        <span>b: {showYear(birth)}</span>
+        <i>b: {showYear(birth)}</i>
       </StyledDates>
     </StyledLi>
   )
