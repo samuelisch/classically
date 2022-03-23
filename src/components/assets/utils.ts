@@ -7,9 +7,9 @@ export const listColor = (period: string) => {
     case 'Medieval':
       return "#cc5500"
     case 'Renaissance':
-      return '#00ced1'
+      return '#00bdc0'
     case 'Baroque':
-      return '#8cbed6'
+      return '#7badc5'
     case 'Classical':
       return '#00008b'
     case 'Early Romantic':

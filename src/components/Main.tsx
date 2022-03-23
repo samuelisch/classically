@@ -7,7 +7,7 @@ const StyledContainer = styled.div`
 `
 
 const StyledContent = styled.div`
-  flex: 1;
+  flex: 7;
   min-height: 100vh;
   overflow-x: hidden;
 `

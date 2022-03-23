@@ -10,6 +10,7 @@ const StyledContainer = styled.div`
 
 const StyledList = styled.ul`
   display: flex;
+  margin: 0 auto;
   overflow-x: scroll;
 `
 

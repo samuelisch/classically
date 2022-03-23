@@ -12,6 +12,7 @@ const StyledContainer = styled.div`
 
 const StyledInput = styled.input`
   width: 70%;
+  max-width: 500px;
   padding: 5px 10px;
   border: none;
   border-radius: 15px;

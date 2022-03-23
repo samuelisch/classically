@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { ComposerType } from '../../reducers/composersSlice';
-import { listColor } from '../assets/utils';
+import { listColor, listYears } from '../assets/utils';
 import { HashLink } from 'react-router-hash-link'
 
 import Composer from './PeriodComposer'
@@ -14,13 +14,24 @@ const StyledContainer = styled.div<StyledProps>`
   background: ${props => listColor(props.period)};
 
   .periodTitle {
-    padding: 3px 10px;
+    padding: 4px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    .periodDetails {
+      display: flex;
+      align-items: center;
+    }
+
     h4 {
       font-size: 1.5rem;
+      color: rgb(240, 240, 240);
+      margin-right: 10px;
+    }
+
+    .years {
+      font-size: 1.2rem;
       color: rgb(240, 240, 240);
     }
 
@@ -63,7 +74,10 @@ const Period = ({ period, composerList }: PropsType) => {
   return (
     <StyledContainer id={period} period={period}>
       <div className="periodTitle">
-        <h4>{period}</h4>
+        <div className="periodDetails">
+          <h4>{period}</h4>
+          <span className="years">{listYears(period)}</span>
+        </div>
         <HashLink smooth to="#">Back to top</HashLink>
       </div>
       <StyledList>{composers}</StyledList>
