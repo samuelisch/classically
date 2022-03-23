@@ -10,13 +10,19 @@ const StyledNav = styled.nav`
 const StyledList = styled.ul`
   position: sticky;
   top: 10px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   li {
     list-style: none;
     padding: 10px 0;
     border: 1px solid red;
+  }
+
+  .mode {
+    margin-bottom: 20px;
   }
 `
 
@@ -29,6 +35,7 @@ const Navbar = () => {
   return (
     <StyledNav>
       <StyledList>
+        <div>
           <StyledLink to="/home">
             <li>Home</li>
           </StyledLink>
@@ -41,6 +48,10 @@ const Navbar = () => {
           <StyledLink to="/search">
             <li>Search</li>
           </StyledLink>
+        </div>
+        <div className="mode">
+          <button type="button">Mode</button>
+        </div>
       </StyledList>
     </StyledNav>
   )
