@@ -1,19 +1,13 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import musicCall from "../../apiCalls/musicCall";
-import { ComposerType } from "../../reducers/composersSlice";
-import { WorkType } from "../works/Work";
-import ResultList from "./ResultList";
 
-type ResultType = {
-  composer: ComposerType,
-  work: WorkType
-}
+import ResultList, { ResultType } from "./ResultList";
 
 const StyledContainer = styled.div`
   padding: 20px 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 `;
 
 const StyledInput = styled.input`
@@ -21,38 +15,47 @@ const StyledInput = styled.input`
   padding: 5px 10px;
   border: none;
   border-radius: 15px;
+  margin: 0 auto;
 `;
-
-const StyledResultsList = styled.ul``
 
 const Search = () => {
   const [inputVal, setInputVal] = useState("");
-  const [results, setResults] = useState<ResultType[]>([])
+  const [results, setResults] = useState<ResultType[]>([]);
+  const [empty, setEmpty] = useState(false);
   
   useEffect(() => {
     let mounted = true
-    if (inputVal.length >= 3) {
-      musicCall
-        .searchMusic(inputVal)
-        .then(response => {
-          if (mounted) {
-            console.log(response.results)
-          }
-        })
-        .catch(err => {
-          if (mounted) {
-            console.error(err)
-          }
-        })
+    if (inputVal.length < 3) {
+      setEmpty(false)
+      setResults([])
+      return
     }
+
+    musicCall
+      .searchMusic(inputVal)
+      .then(response => {
+        if (mounted) {
+          if (!response.results) {
+            setEmpty(true)
+          } else {
+            setEmpty(false)
+            const filteredResults = response.results.filter((result: ResultType) => result.work)
+            console.log(filteredResults)
+            setResults(filteredResults)
+          }
+        }
+      })
+      .catch(err => {
+        if (mounted) {
+          console.error(err)
+        }
+      })
 
     return () => {
       mounted = false;
     }
   }, [inputVal])
 
-  // populate result component with whatever returned
-  // link result to navigate to track instance using track and composer id
   return (
     <StyledContainer>
       <StyledInput
@@ -63,9 +66,11 @@ const Search = () => {
         autoComplete="off"
         placeholder="Search title ..."
       />
-      <StyledResultsList>
-
-      </StyledResultsList>
+      {empty 
+        ? <h1>Search returned nothing!</h1>
+        : 
+        <ResultList results={results} />
+      }
     </StyledContainer>
   );
 };
