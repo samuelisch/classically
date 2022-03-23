@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { ComposerType } from "../../reducers/composersSlice";
 import { useAppSelector } from "../../reducers/hooks";
-import Work, { WorkType } from "./Work";
+import Work from "./Work";
+import { WorkType } from './WorkPage'
 import styled from "styled-components";
 import musicCall from "../../apiCalls/musicCall";
 
@@ -19,26 +19,34 @@ const WorksList = ({ composerId }: PropsType) => {
   const [composerWorks, setComposerWorks] = useState<WorkType[] | []>([]);
 
   useEffect(() => {
+    let mounted = true
     if (composerId) {
       const selectedComposer = composerList.find(composer => composer.id === composerId)
       if (selectedComposer) {
         musicCall
           .getWorksFromComposerId(composerId)
           .then(response => {
-            console.log(response.works)
-            setComposerWorks(response.works)
+            if (mounted) {
+              setComposerWorks(response.works)
+            }
+          })
+          .catch(err => {
+            if (mounted) {
+              console.error(err)
+            }
           })
       }
+    }
+
+    return () => {
+      mounted = false;
     }
   }, [composerId, composerList])
 
   const listOfWorks = composerWorks.map((work: WorkType) => (
     <Work 
       key={work.id}
-      id={work.id}
-      genre={work.genre}
-      subtitle={work.subtitle}
-      title={work.title}
+      work={work}
     />
   ))
 

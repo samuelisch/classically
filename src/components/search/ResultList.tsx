@@ -1,5 +1,5 @@
 import { ComposerType } from '../../reducers/composersSlice'
-import { WorkType } from '../works/Work'
+import { WorkType } from '../works/WorkPage'
 import styled from 'styled-components'
 
 import Result from './Result'
@@ -25,9 +25,10 @@ const ResultList = ({ results }: PropsType) => {
 
   const allTracks = results.map((result: ResultType, i) => (
     <Result 
-      key={i} // TO BE REPLACED WITH ID
+      key={result.work.id} // TO BE REPLACED WITH ID
       composerId={result.composer.id}
       genre={result.work.genre}
+      titleId={result.work.id}
       title={result.work.title}
       composerName={result.composer.complete_name}
     />

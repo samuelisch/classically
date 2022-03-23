@@ -3,10 +3,11 @@ import styled from "styled-components";
 import spotifyCall from "../../apiCalls/spotifyCall";
 import { ComposerType } from "../../reducers/composersSlice";
 import Recording, { RecordingPropsType } from "./Recording";
+import { WorkType } from "./WorkPage";
 
 type PropTypes = {
   selectedComposer: ComposerType;
-  title: string;
+  work: WorkType;
 };
 
 const StyledEmpty = styled.div`
@@ -19,44 +20,46 @@ const StyledList = styled.ul`
   border-bottom: 1px solid rgb(150, 150, 150);
 `;
 
-const WorkPageRecordingList = ({ selectedComposer, title }: PropTypes) => {
+const WorkPageRecordingList = ({ selectedComposer, work }: PropTypes) => {
   const [workTracks, setWorkTracks] = useState<RecordingPropsType[]>([]);
   const [loaded, setLoaded] = useState(false);
 
   const normalizeString = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
   useEffect(() => {
-    if (selectedComposer.name.length && title) {
+    let mounted = true;
+    if (selectedComposer.name.length && work) {
       spotifyCall
-        .searchTrack(encodeURIComponent(normalizeString(title)))
+        .searchTrack(encodeURIComponent(normalizeString(selectedComposer.complete_name)) , encodeURIComponent(normalizeString(work.searchterms[0])))
         .then((response) => {
-          const tracks = response.tracks.items;
-          const formattedTracks = tracks.map((track: any): RecordingPropsType => {
-            return {
-              id: track.id,
-              albumName: track.album.name,
-              albumLink: track.album.external_urls.spotify,
-              albumImg: track.album.images[2].url,
-              trackLink: track.external_urls.spotify,
-              trackName: track.name,
-              previewSound: track.preview_url,
-            };
-          });
-          setWorkTracks(formattedTracks);
-          setLoaded(true)
-        });
+          if (mounted) {
+            const tracks = response.tracks.items;
+            const formattedTracks = tracks.map((track: any): RecordingPropsType => {
+              return {
+                id: track.id,
+                albumName: track.album.name,
+                albumLink: track.album.external_urls.spotify,
+                albumImg: track.album.images[2].url,
+                trackLink: track.external_urls.spotify,
+                trackName: track.name,
+                previewSound: track.preview_url,
+              };
+            });
+            setWorkTracks(formattedTracks);
+            setLoaded(true) 
+        }
+      })
+      .catch(err => {
+        console.error(err)
+      })
     }
-  }, [selectedComposer, title]);
 
-  const filteredTracks = workTracks.filter((track: RecordingPropsType) => {
-    const normalizedTitle = normalizeString(title)
-    return (
-      track.trackName.includes(normalizedTitle.split(" ")[0].replace(/\W/g, '')) ||
-      track.albumName.includes(normalizedTitle.split(" ")[0].replace(/\W/g, ''))
-    );
-  });
+    return () => {
+      mounted = false;
+    }
+  }, [selectedComposer, work]);
 
-  const sortedTracks = filteredTracks.sort((a, b) => b.previewSound ? 1 : -1)
+  const sortedTracks = workTracks.sort((a, b) => b.previewSound ? 1 : -1)
 
   const allTracks = sortedTracks.map((track: RecordingPropsType) => (
     <Recording

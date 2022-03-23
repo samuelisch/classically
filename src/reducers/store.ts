@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import composersSlice from './composersSlice';
-import dumpSlice from './dumpSlice';
 import popularSlice from './popularSlice';
 
 export const store = configureStore({
   reducer: {
     composers: composersSlice,
     popular: popularSlice,
-    dump: dumpSlice
   }
 })
 

@@ -30,15 +30,16 @@ type PropsType = {
   //id : string,
   composerId: string,
   genre: string,
+  titleId: string,
   title: string,
   composerName: string,
 }
 
-const Result = ({ composerId, genre, title, composerName }: PropsType) => {
+const Result = ({ composerId, genre, titleId, title, composerName }: PropsType) => {
   const navigate = useNavigate();
 
   return (
-    <StyledElement onClick={() => navigate(`/composer/${composerId}/${title}`)}>
+    <StyledElement onClick={() => navigate(`/composer/${composerId}/${titleId}`)}>
       <StyledTitle>{title}</StyledTitle>
       <StyledDescription>
         <span>{composerName},</span>

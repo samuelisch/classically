@@ -15,11 +15,10 @@ const getToken = async () => {
     },
   })
   token = `Bearer ${response.data.access_token}`
-  return token
 };
 
-const searchTrack = async (title: string) => {
-  const response = await axios.get(`${searchUrl}?q=${title}&type=track`, {
+const searchTrack = async (name: string, term: string) => {
+  const response = await axios.get(`${searchUrl}?q=${name}%2C${term}&type=artist%2Ctrack`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': token

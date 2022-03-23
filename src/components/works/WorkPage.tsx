@@ -7,9 +7,17 @@ import styled from "styled-components";
 import { listColor } from '../assets/utils';
 
 import WorkPageRecordingList from "./WorkPageRecordingList";
+import musicCall from "../../apiCalls/musicCall";
 
 type StyledProps = {
   period: string
+}
+
+export type WorkType = {
+  id: string
+  genre: string,
+  title: string,
+  searchterms: string[]
 }
 
 const StyledSticky = styled.div<StyledProps>`
@@ -85,6 +93,7 @@ const WorkPage = () => {
   const { composerId, workId } = useParams();
   const navigate = useNavigate();
   const [selectedComposer, setSelectedComposer] = useState<ComposerType>(defaultComposer)
+  const [work, setWork] = useState<WorkType | null>(null)
   const { composerList } = useAppSelector((state) => state.composers);
 
   useEffect(() => {
@@ -96,7 +105,29 @@ const WorkPage = () => {
     }
   }, [composerId, composerList])
 
-  if (selectedComposer && workId) {
+  useEffect (() => {
+    let mounted = true;
+    if (workId) {
+      musicCall
+        .getWorkDetail(workId)
+        .then(response => {
+          if (mounted) {
+            setWork(response.work)
+          }
+        })
+        .catch(err => {
+          if (mounted) {
+            console.error(err)
+          }
+        })
+
+      return () => {
+        mounted = false;
+      }
+    }
+  }, [workId])
+
+  if (selectedComposer && work) {
     return (
       <>
         <StyledSticky period={selectedComposer.epoch}>
@@ -107,7 +138,7 @@ const WorkPage = () => {
             <h2>Recordings</h2>
           </StyledTop>
           <StyledDetails>
-            <h1>{title}</h1>
+            <h1>{work.title}</h1>
             <div className="composerDetails" onClick={() => navigate(`/composer/${selectedComposer.id}`)}>
               <div className="portraitContainer">
                 <img src={selectedComposer.portrait} alt="" />
@@ -118,7 +149,7 @@ const WorkPage = () => {
             </div>
           </StyledDetails>
         </StyledSticky>
-        <WorkPageRecordingList selectedComposer={selectedComposer} title={title} />
+        <WorkPageRecordingList selectedComposer={selectedComposer} work={work} />
       </>
     )
   } else {

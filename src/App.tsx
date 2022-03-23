@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { createGlobalStyle } from "styled-components";
 import spotifyCall from "./apiCalls/spotifyCall";
 import { fetchAllComposers } from "./reducers/composersSlice";
-import { fetchEverything } from "./reducers/dumpSlice";
 import { useAppDispatch } from "./reducers/hooks";
 import { fetchPopularComposers } from "./reducers/popularSlice";
 
@@ -34,7 +33,6 @@ const App = () => {
   // remove dispatch dump, add cleanup for api calls upon re-render
   // useContext for dark mode
   useEffect(() => {
-    dispatch(fetchEverything());
     dispatch(fetchAllComposers());
     dispatch(fetchPopularComposers());
   }, [dispatch])

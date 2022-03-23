@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { WorkType } from './WorkPage'
 
 const StyledElement = styled.li`
   background: rgb(220, 220, 220);
@@ -25,21 +26,18 @@ const StyledGenre = styled.span`
   font-size: 1.1rem;
 `
 
-export type WorkType = {
-  id: string
-  genre: string,
-  title: string,
-  subtitle: string
+type PropsType = {
+  work: WorkType
 }
 
-const Work = ({ id, genre, title }: WorkType) => {
+const Work = ({ work }: PropsType) => {
   const navigate = useNavigate();
 
   return (
-    <StyledElement onClick={() => navigate(`${id}`)}>
+    <StyledElement onClick={() => navigate(`${work.id}`)}>
       <StyledContainer>
-        <StyledTitle>{title}</StyledTitle>
-        <StyledGenre>{genre}</StyledGenre>
+        <StyledTitle>{work.title}</StyledTitle>
+        <StyledGenre>{work.genre}</StyledGenre>
       </StyledContainer>
     </StyledElement>
   )
