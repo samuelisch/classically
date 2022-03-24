@@ -6,7 +6,7 @@ import { ThemeContext } from "../../ThemeContextWrapper";
 
 const StyledContainer = styled.div`
   margin: 50px 0;
-`
+`;
 
 const StyledList = styled.ul`
   display: flex;
@@ -19,7 +19,7 @@ const StyledList = styled.ul`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-`
+`;
 
 const StyledElement = styled.li`
   margin: 25px 30px;
@@ -31,7 +31,7 @@ const StyledElement = styled.li`
   justify-content: center;
   width: 160px;
   height: 220px;
-  background: ${props => props.theme.listBackground};
+  background: ${(props) => props.theme.listBackground};
 
   .imgContainer {
     width: 140px;
@@ -53,23 +53,27 @@ const StyledElement = styled.li`
 
   &:hover {
     cursor: pointer;
-    background: ${props => props.theme.listHoverColor};
+    background: ${(props) => props.theme.listHoverColor};
   }
-`
+`;
 
 const ViewedComposers = () => {
-  const { theme } = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const viewedComposers = useAppSelector(state => state.viewedComposers);
+  const viewedComposers = useAppSelector((state) => state.viewedComposers);
 
-  const allViewedComposers = viewedComposers.map(composer => (
-    <StyledElement theme={theme} key={composer.id} onClick={() => navigate(`/composer/${composer.id}`)}>
+  const allViewedComposers = viewedComposers.map((composer) => (
+    <StyledElement
+      theme={theme}
+      key={composer.id}
+      onClick={() => navigate(`/composer/${composer.id}`)}
+    >
       <div className="imgContainer">
         <img src={composer.portrait} alt={composer.name} />
       </div>
       <h2 className="composerName">{composer.complete_name}</h2>
     </StyledElement>
-  ))
+  ));
 
   if (!viewedComposers.length) {
     return null;
@@ -78,11 +82,9 @@ const ViewedComposers = () => {
   return (
     <StyledContainer>
       <h1>Composers Viewed</h1>
-      <StyledList>
-        {allViewedComposers}
-      </StyledList>
+      <StyledList>{allViewedComposers}</StyledList>
     </StyledContainer>
-  )
-}
+  );
+};
 
-export default ViewedComposers
+export default ViewedComposers;

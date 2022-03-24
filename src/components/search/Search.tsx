@@ -10,11 +10,11 @@ const StyledContainer = styled.div`
   padding: 20px 0;
   display: flex;
   flex-direction: column;
-  background: ${props => props.theme.background};
-  transition: background .1s;
+  background: ${(props) => props.theme.background};
+  transition: background 0.1s;
 
   h1 {
-    color: ${props => props.theme.color};
+    color: ${(props) => props.theme.color};
   }
 `;
 
@@ -24,10 +24,10 @@ const StyledInput = styled.input`
   padding: 5px 10px;
   border: none;
   margin: 0 auto;
-  background: ${props => props.theme.background};
+  background: ${(props) => props.theme.background};
   border-bottom: 1px solid rgb(150, 150, 150);
-  color: ${props => props.theme.color};
-  transition: background .1s;
+  color: ${(props) => props.theme.color};
+  transition: background 0.1s;
   font-size: 1.5rem;
 
   &:focus {
@@ -40,38 +40,40 @@ const Search = () => {
   const [inputVal, setInputVal] = useState("");
   const [results, setResults] = useState<SearchResultType[]>([]);
   const [empty, setEmpty] = useState(false);
-  
+
   useEffect(() => {
-    let mounted = true
+    let mounted = true;
     if (inputVal.length < 3) {
-      setEmpty(false)
-      setResults([])
-      return
+      setEmpty(false);
+      setResults([]);
+      return;
     }
 
     musicCall
       .searchMusic(inputVal)
-      .then(response => {
+      .then((response) => {
         if (mounted) {
           if (!response.results) {
-            setEmpty(true)
+            setEmpty(true);
           } else {
-            setEmpty(false)
-            const filteredResults = response.results.filter((result: SearchResultType) => result.work)
-            setResults(filteredResults)
+            setEmpty(false);
+            const filteredResults = response.results.filter(
+              (result: SearchResultType) => result.work
+            );
+            setResults(filteredResults);
           }
         }
       })
-      .catch(err => {
+      .catch((err) => {
         if (mounted) {
-          console.error(err)
+          console.error(err);
         }
-      })
+      });
 
     return () => {
       mounted = false;
-    }
-  }, [inputVal])
+    };
+  }, [inputVal]);
 
   return (
     <StyledContainer theme={theme}>
@@ -84,11 +86,11 @@ const Search = () => {
         autoComplete="off"
         placeholder="Search title ..."
       />
-      {empty 
-        ? <h1>Search returned nothing!</h1>
-        : 
+      {empty ? (
+        <h1>Search returned nothing!</h1>
+      ) : (
         <ResultList results={results} />
-      }
+      )}
     </StyledContainer>
   );
 };

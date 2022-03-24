@@ -15,7 +15,7 @@ const StyledList = styled.ul`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-`
+`;
 
 const StyledElement = styled.li`
   flex: 1;
@@ -28,7 +28,7 @@ const StyledElement = styled.li`
   min-width: 250px;
   max-width: 500px;
   height: 70px;
-  background: ${props => props.theme.listBackground};
+  background: ${(props) => props.theme.listBackground};
 
   .workName {
     font-size: 1.5rem;
@@ -40,21 +40,27 @@ const StyledElement = styled.li`
 
   &:hover {
     cursor: pointer;
-    background: ${props => props.theme.listHoverColor};
+    background: ${(props) => props.theme.listHoverColor};
   }
-`
+`;
 
 const ViewedWorks = () => {
-  const { theme } = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const viewedWorks = useAppSelector(state => state.viewedWorks);
+  const viewedWorks = useAppSelector((state) => state.viewedWorks);
 
-  const allViewedWorks = viewedWorks.map(obj => (
-    <StyledElement theme={theme} key={obj.viewedWork.id} onClick={() => navigate(`/composer/${obj.workComposer.id}/${obj.viewedWork.id}/`)}>
+  const allViewedWorks = viewedWorks.map((obj) => (
+    <StyledElement
+      theme={theme}
+      key={obj.viewedWork.id}
+      onClick={() =>
+        navigate(`/composer/${obj.workComposer.id}/${obj.viewedWork.id}/`)
+      }
+    >
       <h2 className="workName">{obj.viewedWork.title}</h2>
       <p className="workGenre">{obj.viewedWork.genre}</p>
     </StyledElement>
-  ))
+  ));
 
   if (!viewedWorks.length) {
     return null;
@@ -63,11 +69,9 @@ const ViewedWorks = () => {
   return (
     <>
       <h1>Works Viewed</h1>
-      <StyledList>
-        {allViewedWorks}
-      </StyledList>
+      <StyledList>{allViewedWorks}</StyledList>
     </>
-  )
-}
+  );
+};
 
-export default ViewedWorks
+export default ViewedWorks;

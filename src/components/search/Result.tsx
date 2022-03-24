@@ -1,42 +1,42 @@
-import { useContext } from 'react'
-import { useNavigate } from 'react-router'
-import styled from 'styled-components'
-import { useAppDispatch } from '../../reducers/hooks'
-import { addViewedWorks } from '../../reducers/viewedWorkSlice'
-import { ThemeContext } from '../../ThemeContextWrapper'
-import { SearchResultType } from '../assets/types'
+import { useContext } from "react";
+import { useNavigate } from "react-router";
+import styled from "styled-components";
+import { useAppDispatch } from "../../reducers/hooks";
+import { addViewedWorks } from "../../reducers/viewedWorkSlice";
+import { ThemeContext } from "../../ThemeContextWrapper";
+import { SearchResultType } from "../assets/types";
 
 const StyledElement = styled.li`
   width: 100%;
   padding: 5px 8px;
-  border-bottom: 1px solid ${props => props.theme.borderColor};
-  transition: background .1s;
-  background: ${props => props.theme.background};
-  transition: background .1s;
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
+  transition: background 0.1s;
+  background: ${(props) => props.theme.background};
+  transition: background 0.1s;
 
   &:last-of-type {
     border-bottom: none;
   }
 
   &:hover {
-    background: ${props => props.theme.hoverColor};
+    background: ${(props) => props.theme.hoverColor};
     cursor: pointer;
   }
-`
+`;
 
 const StyledTitle = styled.p`
   font-size: 1.3rem;
-  color: ${props => props.theme.color}
-`
+  color: ${(props) => props.theme.color};
+`;
 
 const StyledDescription = styled.div`
   font-size: 1.1rem;
-  color: ${props => props.theme.color};
-`
+  color: ${(props) => props.theme.color};
+`;
 
 type PropsType = {
-  result: SearchResultType
-}
+  result: SearchResultType;
+};
 
 const Result = ({ result }: PropsType) => {
   const { theme } = useContext(ThemeContext);
@@ -44,10 +44,12 @@ const Result = ({ result }: PropsType) => {
   const dispatch = useAppDispatch();
 
   const resultClickHandler = () => {
-    console.log(result.work)
-    dispatch(addViewedWorks({workComposer: result.composer, viewedWork: result.work}));
-    navigate(`/composer/${result.composer.id}/${result.work.id}`)
-  }
+    console.log(result.work);
+    dispatch(
+      addViewedWorks({ workComposer: result.composer, viewedWork: result.work })
+    );
+    navigate(`/composer/${result.composer.id}/${result.work.id}`);
+  };
 
   return (
     <StyledElement onClick={resultClickHandler} theme={theme}>
@@ -55,10 +57,12 @@ const Result = ({ result }: PropsType) => {
       <StyledDescription theme={theme}>
         <span>{result.composer.complete_name},</span>
         &nbsp;
-        <span><i>{result.work.genre}</i></span>
+        <span>
+          <i>{result.work.genre}</i>
+        </span>
       </StyledDescription>
     </StyledElement>
-  )
-}
+  );
+};
 
-export default Result
+export default Result;

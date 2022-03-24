@@ -26,7 +26,7 @@ const Timeline = () => {
     "Late Romantic",
     "20th Century",
     "Post-War",
-    "21st Century"
+    "21st Century",
   ];
 
   return (

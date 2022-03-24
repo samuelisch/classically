@@ -3,7 +3,7 @@ import { ReactComponent as BackButton } from "../assets/backButton.svg";
 import { useAppDispatch, useAppSelector } from "../../reducers/hooks";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { listColor } from '../assets/utils';
+import { listColor } from "../assets/utils";
 
 import WorkPageRecordingList from "./WorkPageRecordingList";
 import musicCall from "../../apiCalls/musicCall";
@@ -13,11 +13,11 @@ import { ComposerType, StyledColorProps, WorkType } from "../assets/types";
 const StyledSticky = styled.div<StyledColorProps>`
   position: sticky;
   top: 0;
-  background: ${props => listColor(props.period)};
-  transition: background .1s;
+  background: ${(props) => listColor(props.period)};
+  transition: background 0.1s;
   color: rgb(240, 240, 240);
   padding: 5px 5px 10px;
-`
+`;
 
 const StyledTop = styled.div`
   display: flex;
@@ -53,7 +53,7 @@ const StyledDetails = styled.div`
       border-radius: 50%;
       overflow: hidden;
       margin-right: 10px;
-  
+
       img {
         width: 100%;
         height: 100%;
@@ -68,7 +68,7 @@ const StyledDetails = styled.div`
       cursor: pointer;
     }
   }
-`
+`;
 
 const defaultComposer = {
   id: "",
@@ -77,52 +77,55 @@ const defaultComposer = {
   name: "",
   complete_name: "",
   epoch: "",
-  portrait: ""
-}
+  portrait: "",
+};
 
 const WorkPage = () => {
   const { composerId, workId } = useParams();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [selectedComposer, setSelectedComposer] = useState<ComposerType>(defaultComposer)
-  const [work, setWork] = useState<WorkType | null>(null)
+  const [selectedComposer, setSelectedComposer] =
+    useState<ComposerType>(defaultComposer);
+  const [work, setWork] = useState<WorkType | null>(null);
   const { composerList } = useAppSelector((state) => state.composers);
 
   useEffect(() => {
     if (composerId) {
-      const selected = composerList.find(composer => composer.id === composerId)
+      const selected = composerList.find(
+        (composer) => composer.id === composerId
+      );
       if (selected) {
-        setSelectedComposer(selected)
+        setSelectedComposer(selected);
       }
     }
-  }, [composerId, composerList])
+  }, [composerId, composerList]);
 
-  useEffect (() => {
+  useEffect(() => {
     let mounted = true;
     if (workId) {
       musicCall
         .getWorkDetail(workId)
-        .then(response => {
+        .then((response) => {
           if (mounted) {
-            setWork(response.work)
+            setWork(response.work);
           }
         })
-        .catch(err => {
+        .catch((err) => {
           if (mounted) {
-            console.error(err)
+            console.error(err);
           }
-        })
+        });
 
       return () => {
         mounted = false;
-      }
+      };
     }
-  }, [workId])
+  }, [workId]);
 
   const composerNameClick = () => {
     dispatch(addViewedComposers(selectedComposer));
-    navigate(`/composer/${selectedComposer.id}`)
-  }
+    navigate(`/composer/${selectedComposer.id}`);
+  };
 
   if (selectedComposer && work) {
     return (
@@ -130,7 +133,7 @@ const WorkPage = () => {
         <StyledSticky period={selectedComposer.epoch}>
           <StyledTop>
             <div className="svgContainer" onClick={() => navigate(-1)}>
-              <BackButton fill='rgb(240, 240, 240)' />
+              <BackButton fill="rgb(240, 240, 240)" />
             </div>
             <h2>Recordings</h2>
           </StyledTop>
@@ -141,17 +144,22 @@ const WorkPage = () => {
                 <img src={selectedComposer.portrait} alt="" />
               </div>
               <div>
-                <span className="composerName">{selectedComposer.complete_name}</span>
+                <span className="composerName">
+                  {selectedComposer.complete_name}
+                </span>
               </div>
             </div>
           </StyledDetails>
         </StyledSticky>
-        <WorkPageRecordingList selectedComposer={selectedComposer} work={work} />
+        <WorkPageRecordingList
+          selectedComposer={selectedComposer}
+          work={work}
+        />
       </>
-    )
+    );
   } else {
-    return null
+    return null;
   }
-}
+};
 
-export default WorkPage
+export default WorkPage;

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { listColor } from "../assets/utils";
-import { RandomWorkType, StyledColorProps } from '../assets/types'
+import { RandomWorkType, StyledColorProps } from "../assets/types";
 
 const StyledList = styled.ul`
   display: flex;
@@ -16,7 +16,7 @@ const StyledList = styled.ul`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-`
+`;
 
 const StyledElement = styled.li<StyledColorProps>`
   flex: 1;
@@ -29,7 +29,7 @@ const StyledElement = styled.li<StyledColorProps>`
   min-width: 250px;
   max-width: 500px;
   height: 70px;
-  background: ${props => listColor(props.period)};
+  background: ${(props) => listColor(props.period)};
 
   .workName {
     font-size: 1.5rem;
@@ -45,22 +45,27 @@ const StyledElement = styled.li<StyledColorProps>`
     cursor: pointer;
     opacity: 95%;
   }
-`
+`;
 
 type PropsType = {
-  randomWorks: RandomWorkType[]
-}
+  randomWorks: RandomWorkType[];
+};
 
 const RandomWorks = ({ randomWorks }: PropsType) => {
-  const { theme } = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
-  const allRandomWorks = randomWorks.map(obj => (
-    <StyledElement theme={theme} key={obj.id} period={obj.composer.epoch} onClick={() => navigate(`/composer/${obj.composer.id}/${obj.id}/`)}>
+  const allRandomWorks = randomWorks.map((obj) => (
+    <StyledElement
+      theme={theme}
+      key={obj.id}
+      period={obj.composer.epoch}
+      onClick={() => navigate(`/composer/${obj.composer.id}/${obj.id}/`)}
+    >
       <h2 className="workName">{obj.title}</h2>
       <p className="workGenre">{obj.genre}</p>
     </StyledElement>
-  ))
+  ));
 
   if (!randomWorks.length) {
     return null;
@@ -69,11 +74,9 @@ const RandomWorks = ({ randomWorks }: PropsType) => {
   return (
     <>
       <h1>Reccomended Tracks</h1>
-      <StyledList>
-        {allRandomWorks}
-      </StyledList>
+      <StyledList>{allRandomWorks}</StyledList>
     </>
-  )
-}
+  );
+};
 
-export default RandomWorks
+export default RandomWorks;

@@ -2,34 +2,37 @@ import axios from "axios";
 
 const clientEncoded = process.env.REACT_APP_CLIENT_ENCODED;
 
-const tokenUrl = 'https://accounts.spotify.com/api/token'
-const searchUrl = 'https://api.spotify.com/v1/search'
+const tokenUrl = "https://accounts.spotify.com/api/token";
+const searchUrl = "https://api.spotify.com/v1/search";
 
-let token: string = '';
+let token: string = "";
 
 const getToken = async () => {
-  const response = await axios.post(tokenUrl, 'grant_type=client_credentials', {
+  const response = await axios.post(tokenUrl, "grant_type=client_credentials", {
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': `Basic ${clientEncoded}`
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Basic ${clientEncoded}`,
     },
-  })
-  token = `Bearer ${response.data.access_token}`
+  });
+  token = `Bearer ${response.data.access_token}`;
 };
 
 const searchTrack = async (name: string, term: string) => {
-  const response = await axios.get(`${searchUrl}?q=${name}%2C${term}&type=artist%2Ctrack`, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': token
+  const response = await axios.get(
+    `${searchUrl}?q=${name}%2C${term}&type=artist%2Ctrack`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
     }
-  })
-  return response.data
-}
+  );
+  return response.data;
+};
 
 const spotifyCall = {
   getToken,
-  searchTrack
+  searchTrack,
 };
 
 export default spotifyCall;

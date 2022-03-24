@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import App from './App';
-import { store } from './reducers/store'
-import ThemeContextWrapper from './ThemeContextWrapper';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import App from "./App";
+import { store } from "./reducers/store";
+import ThemeContextWrapper from "./ThemeContextWrapper";
 
 ReactDOM.render(
   <ThemeContextWrapper>
@@ -13,5 +13,5 @@ ReactDOM.render(
       </Provider>
     </React.StrictMode>
   </ThemeContextWrapper>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

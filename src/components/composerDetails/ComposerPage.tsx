@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAppSelector } from "../../reducers/hooks";
 import { ReactComponent as BackButton } from "../assets/backButton.svg";
 import styled from "styled-components";
-import { listColor } from '../assets/utils';
+import { listColor } from "../assets/utils";
 
 import ComposerDetails from "./ComposerDetails";
 import WorksList from "../works/WorksList";
@@ -16,8 +16,8 @@ const StyledContainer = styled.div`
 const StyledSticky = styled.div<StyledColorProps>`
   position: sticky;
   top: 0;
-  background: ${props => listColor(props.period)};
-  transition: background .1s;
+  background: ${(props) => listColor(props.period)};
+  transition: background 0.1s;
   color: rgb(240, 240, 240);
   padding-bottom: 10px;
 
@@ -32,7 +32,7 @@ const StyledSticky = styled.div<StyledColorProps>`
       width: 100%;
     }
   }
-`
+`;
 
 const StyledTop = styled.div`
   padding: 5px;
@@ -61,14 +61,15 @@ const defaultComposer = {
   name: "",
   complete_name: "",
   epoch: "",
-  portrait: ""
-}
+  portrait: "",
+};
 
 const ComposerPage = () => {
   const { composerId } = useParams();
   const navigate = useNavigate();
   const { composerList } = useAppSelector((state) => state.composers);
-  const [displayComposer, setDisplayComposer] = useState<ComposerType>(defaultComposer);
+  const [displayComposer, setDisplayComposer] =
+    useState<ComposerType>(defaultComposer);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {

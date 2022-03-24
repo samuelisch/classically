@@ -1,19 +1,19 @@
-import styled from 'styled-components'
-import { ComposerType, StyledColorProps } from '../assets/types';
-import { listColor, listYears } from '../assets/utils';
+import styled from "styled-components";
+import { ComposerType, StyledColorProps } from "../assets/types";
+import { listColor, listYears } from "../assets/utils";
 
-import Composer from './PeriodComposer'
+import Composer from "./PeriodComposer";
 
 const StyledContainer = styled.div<StyledColorProps>`
   padding-left: 20px;
-  background: ${props => listColor(props.period)};
+  background: ${(props) => listColor(props.period)};
 
   .periodTitle {
     padding: 5px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: ${props => listColor(props.period)};
+    background: ${(props) => listColor(props.period)};
     position: sticky;
     top: 64px;
     z-index: 2;
@@ -39,25 +39,20 @@ const StyledContainer = styled.div<StyledColorProps>`
       }
     }
   }
-`
+`;
 
 const StyledList = styled.ul`
   list-style: none;
 `;
 
 type PropsType = {
-  period: string,
-  composerList: ComposerType[]
-}
+  period: string;
+  composerList: ComposerType[];
+};
 
 const Period = ({ period, composerList }: PropsType) => {
   const composers = composerList.map((composer: any) => {
-    return (
-      <Composer
-        key={composer.id}
-        composer={composer}
-      />
-    );
+    return <Composer key={composer.id} composer={composer} />;
   });
 
   return (
@@ -70,7 +65,7 @@ const Period = ({ period, composerList }: PropsType) => {
       </div>
       <StyledList>{composers}</StyledList>
     </StyledContainer>
-  )
-}
+  );
+};
 
-export default Period
+export default Period;

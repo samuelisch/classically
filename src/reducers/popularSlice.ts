@@ -9,13 +9,13 @@ type PopularState = {
 };
 
 const initialState = {
-  status: 'idle',
+  status: "idle",
   popularList: [],
   error: null,
-} as PopularState
+} as PopularState;
 
 export const popularSlice = createSlice({
-  name: 'popular',
+  name: "popular",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -34,7 +34,7 @@ export const popularSlice = createSlice({
       state.status = "idle";
     });
   },
-})
+});
 
 export const fetchPopularComposers = createAsyncThunk<ComposerType[]>(
   "popular/init",
@@ -42,6 +42,6 @@ export const fetchPopularComposers = createAsyncThunk<ComposerType[]>(
     const data = await musicCall.getPopularComposers();
     return data.composers;
   }
-)
+);
 
 export default popularSlice.reducer;
