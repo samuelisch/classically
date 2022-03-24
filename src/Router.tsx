@@ -12,15 +12,15 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/classically" element={<Main />}>
+        <Route path="/" element={<Main />}>
           <Route index element={<PopularList />} />
-          <Route path="/classically/timeline" element={<Timeline />} />
-          <Route path="/classically/popular" element={<PopularList />} />
-          <Route path="/classically/composer/:composerId" element={<ComposerPage />} />
-          <Route path="/classically/composer/:composerId/:workId" element={<WorkPage />} />
-          <Route path="/classically/search" element={<Search />} />
+          <Route path="/timeline" element={<Timeline />} />
+          <Route path="/popular" element={<PopularList />} />
+          <Route path="/composer/:composerId" element={<ComposerPage />} />
+          <Route path="/composer/:composerId/:workId" element={<WorkPage />} />
+          <Route path="/search" element={<Search />} />
         </Route>
-        <Route path="*" element={<Navigate to="/classically" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   )

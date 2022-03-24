@@ -102,19 +102,19 @@ const Navbar = () => {
                 <span className="iconText">Home</span>
               </li>
             </StyledLink> */}
-            <StyledLink to="/classically/popular" theme={theme}>
+            <StyledLink to="/popular" theme={theme}>
               <li>
                 <GiMusicalScore />
                 <span className="iconText">Featured</span>
               </li>
             </StyledLink>
-            <StyledLink to="/classically/timeline" theme={theme}>
+            <StyledLink to="/timeline" theme={theme}>
               <li>
                 <GiBackwardTime />
                 <span className="iconText">Timeline</span>
               </li>
             </StyledLink>
-            <StyledLink to="/classically/search" theme={theme}>
+            <StyledLink to="/search" theme={theme}>
               <li>
                 <BiSearch />
                 <span className="iconText">Search</span>

@@ -20,9 +20,6 @@ export type PropsType = {
 }
 
 const ResultList = ({ results }: PropsType) => {
-  // populate result component with results, pass in track id, track genre, title, and composer full name key = trackId
-  // link result to navigate to track instance using track and composer id
-
   const allTracks = results.map((result: ResultType) => (
     <Result 
       key={result.work.id} // TO BE REPLACED WITH ID

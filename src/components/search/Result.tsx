@@ -45,7 +45,7 @@ const Result = ({ composerId, genre, titleId, title, composerName }: PropsType) 
   const navigate = useNavigate();
 
   return (
-    <StyledElement onClick={() => navigate(`/classically/composer/${composerId}/${titleId}`)} theme={theme}>
+    <StyledElement onClick={() => navigate(`/composer/${composerId}/${titleId}`)} theme={theme}>
       <StyledTitle theme={theme}>{title}</StyledTitle>
       <StyledDescription theme={theme}>
         <span>{composerName},</span>
