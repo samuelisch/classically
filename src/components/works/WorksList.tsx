@@ -59,6 +59,8 @@ const WorksList = ({ composerId }: PropsType) => {
           composer={selectedComposer}
         />
       )
+    } else {
+      return null
     }
   })
 
