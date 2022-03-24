@@ -28,6 +28,7 @@ const StyledInput = styled.input`
   border-bottom: 1px solid rgb(150, 150, 150);
   color: ${props => props.theme.color};
   transition: background .1s;
+  font-size: 1.5rem;
 
   &:focus {
     outline: none;
