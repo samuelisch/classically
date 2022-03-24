@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useAppDispatch } from "../../reducers/hooks";
-import { addViewedComposers } from "../../reducers/viewedComposersSlice";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { listColor } from "../assets/utils";
 import { ComposerType, StyledColorProps } from "../assets/types";
@@ -59,10 +57,8 @@ type PropsType = {
 const Popular = ({ composer }: PropsType) => {
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    dispatch(addViewedComposers(composer));
     navigate(`/composer/${composer.id}`);
   };
 

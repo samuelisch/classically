@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import { useAppDispatch } from "../../reducers/hooks";
-import { addViewedWorks } from "../../reducers/viewedWorkSlice";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { SearchResultType } from "../assets/types";
 
@@ -41,13 +39,8 @@ type PropsType = {
 const Result = ({ result }: PropsType) => {
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const resultClickHandler = () => {
-    console.log(result.work);
-    dispatch(
-      addViewedWorks({ workComposer: result.composer, viewedWork: result.work })
-    );
     navigate(`/composer/${result.composer.id}/${result.work.id}`);
   };
 

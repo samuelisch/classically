@@ -55,7 +55,7 @@ const WorksList = ({ composerId }: PropsType) => {
 
   const listOfWorks = composerWorks.map((work: WorkType) => {
     if (selectedComposer) {
-      return <Work key={work.id} work={work} composer={selectedComposer} />;
+      return <Work key={work.id} work={work} />;
     } else {
       return null;
     }

@@ -28,19 +28,22 @@ const StyledElement = styled.li`
   min-width: 250px;
   max-width: 500px;
   height: 70px;
+  box-shadow: 0px 0px 2px rgb(150, 150, 150);
   background: ${(props) => props.theme.listBackground};
+  transition: transform .2s;
 
   .workName {
     font-size: 1.5rem;
   }
 
-  .workGenre {
+  .workComposer {
     font-size: 1.3rem;
   }
 
   &:hover {
     cursor: pointer;
     background: ${(props) => props.theme.listHoverColor};
+    transform: translateY(-5px) scale(103%);
   }
 `;
 
@@ -58,7 +61,7 @@ const ViewedWorks = () => {
       }
     >
       <h2 className="workName">{obj.viewedWork.title}</h2>
-      <p className="workGenre">{obj.viewedWork.genre}</p>
+      <p className="workComposer">{obj.workComposer.complete_name}</p>
     </StyledElement>
   ));
 

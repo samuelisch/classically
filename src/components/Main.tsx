@@ -7,16 +7,16 @@ import Navbar from "./navbar/Navbar";
 
 const StyledContainer = styled.div<ThemeType>`
   display: flex;
-  background: ${(props) => props.theme.background}
-  color: ${(props) => props.theme.color}
+  background: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
 `;
 
 const StyledContent = styled.div`
   flex: 8;
   height: 100vh;
   overflow: scroll;
-  background: ${(props) => props.theme.background}
-  color: ${(props) => props.theme.color}
+  background: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
 `;
 
 const Main = () => {

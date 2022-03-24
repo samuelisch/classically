@@ -1,10 +1,8 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useAppDispatch } from "../../reducers/hooks";
-import { addViewedWorks } from "../../reducers/viewedWorkSlice";
 import { ThemeContext } from "../../ThemeContextWrapper";
-import { ComposerType, WorkType } from "../assets/types";
+import { WorkType } from "../assets/types";
 
 const StyledElement = styled.li`
   background: ${(props) => props.theme.listBackground};
@@ -33,16 +31,13 @@ const StyledGenre = styled.span`
 
 type PropsType = {
   work: WorkType;
-  composer: ComposerType;
 };
 
-const Work = ({ work, composer }: PropsType) => {
+const Work = ({ work }: PropsType) => {
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const workClickHandler = () => {
-    dispatch(addViewedWorks({ workComposer: composer, viewedWork: work }));
     navigate(`${work.id}`);
   };
 

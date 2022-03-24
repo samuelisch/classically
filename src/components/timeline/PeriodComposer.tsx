@@ -3,8 +3,6 @@ import { showYear } from "../assets/utils";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../../ThemeContextWrapper";
-import { useAppDispatch } from "../../reducers/hooks";
-import { addViewedComposers } from "../../reducers/viewedComposersSlice";
 import { ComposerType } from "../assets/types";
 
 const StyledLi = styled.li`
@@ -65,10 +63,8 @@ type PropsType = {
 const Composer = ({ composer }: PropsType) => {
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    dispatch(addViewedComposers(composer));
     navigate(`/composer/${composer.id}`);
   };
 

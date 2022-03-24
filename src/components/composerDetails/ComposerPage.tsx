@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAppSelector } from "../../reducers/hooks";
+import { useAppDispatch, useAppSelector } from "../../reducers/hooks";
 import { ReactComponent as BackButton } from "../assets/backButton.svg";
 import styled from "styled-components";
 import { listColor } from "../assets/utils";
@@ -8,6 +8,7 @@ import { listColor } from "../assets/utils";
 import ComposerDetails from "./ComposerDetails";
 import WorksList from "../works/WorksList";
 import { ComposerType, StyledColorProps } from "../assets/types";
+import { addViewedComposers } from "../../reducers/viewedComposersSlice";
 
 const StyledContainer = styled.div`
   position: relative;
@@ -67,6 +68,7 @@ const defaultComposer = {
 const ComposerPage = () => {
   const { composerId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { composerList } = useAppSelector((state) => state.composers);
   const [displayComposer, setDisplayComposer] =
     useState<ComposerType>(defaultComposer);
@@ -74,11 +76,12 @@ const ComposerPage = () => {
 
   useEffect(() => {
     if (displayComposer.name.length) {
+      dispatch(addViewedComposers(displayComposer))
       setLoaded(true);
     } else {
       setLoaded(false);
     }
-  }, [displayComposer]);
+  }, [displayComposer, dispatch]);
 
   useEffect(() => {
     const selectedComposer = composerList.find(

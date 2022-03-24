@@ -31,13 +31,18 @@ const StyledElement = styled.li<StyledColorProps>`
   max-width: 500px;
   height: 70px;
   background: ${(props) => listColor(props.period)};
+  position: relative;
+  box-shadow: 0px 0px 2px rgb(150, 150, 150);
+  animation-duration: .5s;
+  animation-name: slidein;
+  transition: transform .2s;
 
   .workName {
     font-size: 1.5rem;
     color: rgb(240, 240, 240);
   }
 
-  .workGenre {
+  .workComposer {
     font-size: 1.3rem;
     color: rgb(240, 240, 240);
   }
@@ -45,6 +50,19 @@ const StyledElement = styled.li<StyledColorProps>`
   &:hover {
     cursor: pointer;
     opacity: 95%;
+    transform: translateY(-5px) scale(103%);
+  }
+
+  @keyframes slidein {
+    from {
+      bottom: 100px;
+      opacity: 0%;
+    }
+
+    to {
+      bottom: 0px;
+      opacity: 95%;
+    }
   }
 `;
 
@@ -61,7 +79,7 @@ const RandomWorks = () => {
       onClick={() => navigate(`/composer/${obj.composer.id}/${obj.id}/`)}
     >
       <h2 className="workName">{obj.title}</h2>
-      <p className="workGenre">{obj.genre}</p>
+      <p className="workComposer">{obj.composer.complete_name}</p>
     </StyledElement>
   ));
 

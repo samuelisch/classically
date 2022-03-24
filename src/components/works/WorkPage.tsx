@@ -7,8 +7,8 @@ import { listColor } from "../assets/utils";
 
 import WorkPageRecordingList from "./WorkPageRecordingList";
 import musicCall from "../../apiCalls/musicCall";
-import { addViewedComposers } from "../../reducers/viewedComposersSlice";
 import { ComposerType, StyledColorProps, WorkType } from "../assets/types";
+import { addViewedWorks } from "../../reducers/viewedWorkSlice";
 
 const StyledSticky = styled.div<StyledColorProps>`
   position: sticky;
@@ -90,6 +90,12 @@ const WorkPage = () => {
   const { composerList } = useAppSelector((state) => state.composers);
 
   useEffect(() => {
+    if (selectedComposer && work) {
+      dispatch(addViewedWorks({workComposer: selectedComposer, viewedWork: work}))
+    }
+  }, [selectedComposer, work, dispatch])
+
+  useEffect(() => {
     if (composerId) {
       const selected = composerList.find(
         (composer) => composer.id === composerId
@@ -123,7 +129,6 @@ const WorkPage = () => {
   }, [workId]);
 
   const composerNameClick = () => {
-    dispatch(addViewedComposers(selectedComposer));
     navigate(`/composer/${selectedComposer.id}`);
   };
 
