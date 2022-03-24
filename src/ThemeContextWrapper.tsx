@@ -4,9 +4,9 @@ export const themes = {
   dark: {
     type: 'dark',
     background: 'rgb(40, 40, 40)',
-    listBackground: 'rgb(50, 50, 50)',
+    listBackground: 'rgb(45, 45, 45)',
     color: 'rgb(220, 220, 220)',
-    hoverColor: 'rgb(60, 60, 60)',
+    hoverColor: 'rgb(50, 50, 50)',
     listHoverColor: 'rgb(70, 70, 70)',
     borderColor: 'rgb(80, 80, 80)'
   },

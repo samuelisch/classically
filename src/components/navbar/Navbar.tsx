@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { IconContext } from 'react-icons'
-// import { AiOutlineHome } from 'react-icons/ai'
+import { AiOutlineHome } from 'react-icons/ai'
 import { GiMusicalScore, GiBackwardTime } from "react-icons/gi";
 import { HiOutlineLightBulb, HiLightBulb } from 'react-icons/hi';
 import { BiSearch } from 'react-icons/bi'
@@ -79,7 +79,7 @@ const IconContextProvider = ({className, children}:any) => <IconContext.Provider
 
 const StyledIconContext = styled(IconContextProvider)`
   color: ${props => props.theme.color};
-  font-size: 2.3rem;
+  font-size: 2.5rem;
 `
 
 const Navbar = () => {
@@ -96,12 +96,12 @@ const Navbar = () => {
       <StyledIconContext className="iconProvider" theme={theme}>
         <StyledList theme={theme}>
           <div>
-            {/* <StyledLink to="/popular" theme={theme}>
+            <StyledLink to="/" theme={theme}>
               <li>
                 <AiOutlineHome />
                 <span className="iconText">Home</span>
               </li>
-            </StyledLink> */}
+            </StyledLink>
             <StyledLink to="/popular" theme={theme}>
               <li>
                 <GiMusicalScore />

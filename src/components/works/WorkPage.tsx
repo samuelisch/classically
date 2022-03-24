@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as BackButton } from "../assets/backButton.svg";
-import { useAppSelector } from "../../reducers/hooks";
+import { useAppDispatch, useAppSelector } from "../../reducers/hooks";
 import { useEffect, useState } from "react";
 import { ComposerType } from "../../reducers/composersSlice";
 import styled from "styled-components";
@@ -8,6 +8,7 @@ import { listColor } from '../assets/utils';
 
 import WorkPageRecordingList from "./WorkPageRecordingList";
 import musicCall from "../../apiCalls/musicCall";
+import { addViewedComposers } from "../../reducers/viewedComposersSlice";
 
 type StyledProps = {
   period: string
@@ -93,6 +94,7 @@ const defaultComposer = {
 const WorkPage = () => {
   const { composerId, workId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [selectedComposer, setSelectedComposer] = useState<ComposerType>(defaultComposer)
   const [work, setWork] = useState<WorkType | null>(null)
   const { composerList } = useAppSelector((state) => state.composers);
@@ -128,6 +130,11 @@ const WorkPage = () => {
     }
   }, [workId])
 
+  const composerNameClick = () => {
+    dispatch(addViewedComposers(selectedComposer));
+    navigate(`/composer/${selectedComposer.id}`)
+  }
+
   if (selectedComposer && work) {
     return (
       <>
@@ -140,7 +147,7 @@ const WorkPage = () => {
           </StyledTop>
           <StyledDetails>
             <h1>{work.title}</h1>
-            <div className="composerDetails" onClick={() => navigate(`/composer/${selectedComposer.id}`)}>
+            <div className="composerDetails" onClick={composerNameClick}>
               <div className="portraitContainer">
                 <img src={selectedComposer.portrait} alt="" />
               </div>

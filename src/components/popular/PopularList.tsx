@@ -30,13 +30,7 @@ const PopularList = () => {
   const allPopular = popularList.map((composer: any) => (
     <Popular
       key={composer.id} 
-      id={composer.id}
-      birth={composer.birth}
-      death={composer.death}
-      name={composer.name}
-      complete_name={composer.complete_name}
-      epoch={composer.epoch}
-      portrait={composer.portrait}
+      composer={composer}
     />
   ))
 

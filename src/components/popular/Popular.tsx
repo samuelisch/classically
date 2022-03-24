@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ComposerType } from "../../reducers/composersSlice";
+import { useAppDispatch } from "../../reducers/hooks";
+import { addViewedComposers } from "../../reducers/viewedComposersSlice";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { listColor } from "../assets/utils";
 
@@ -54,26 +56,28 @@ const StyledImageContainer = styled.div<StyledProps>`
   }
 `
 
-const Popular = ({ id, complete_name, epoch, portrait }: ComposerType) => {
+type PropsType = {
+  composer: ComposerType
+}
+
+const Popular = ({ composer }: PropsType) => {
   const { theme } = useContext(ThemeContext)
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    // const selected = dumpList.find(composer => composer.complete_name === completeName)
-    // if (selected) {
-    //   console.log(selected.works)
-    // }
-    navigate(`/composer/${id}`)
+    dispatch(addViewedComposers(composer));
+    navigate(`/composer/${composer.id}`)
   }
 
   return (
     <StyledLi onClick={handleClick} theme={theme}>
-      <StyledImageContainer period={epoch}>
-        <img src={portrait} alt="" />
+      <StyledImageContainer period={composer.epoch}>
+        <img src={composer.portrait} alt="" />
       </StyledImageContainer>
       <StyledDetails theme={theme}>
-        <StyledName>{complete_name}</StyledName>
-        <StyledPeriod>{epoch}</StyledPeriod>
+        <StyledName>{composer.complete_name}</StyledName>
+        <StyledPeriod>{composer.epoch}</StyledPeriod>
     </StyledDetails>
     </StyledLi>
   )

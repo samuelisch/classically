@@ -23,11 +23,7 @@ const ResultList = ({ results }: PropsType) => {
   const allTracks = results.map((result: ResultType) => (
     <Result 
       key={result.work.id} // TO BE REPLACED WITH ID
-      composerId={result.composer.id}
-      genre={result.work.genre}
-      titleId={result.work.id}
-      title={result.work.title}
-      composerName={result.composer.complete_name}
+      result={result}
     />
   ))
 

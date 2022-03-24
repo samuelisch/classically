@@ -5,6 +5,7 @@ import { WorkType } from './WorkPage'
 import styled from "styled-components";
 import musicCall from "../../apiCalls/musicCall";
 import { ThemeContext } from "../../ThemeContextWrapper";
+import { ComposerType } from "../../reducers/composersSlice";
 
 type PropsType = {
   composerId: string
@@ -21,6 +22,7 @@ const WorksList = ({ composerId }: PropsType) => {
   const { theme } = useContext(ThemeContext)
   const { composerList } = useAppSelector((state) => state.composers);
   const [composerWorks, setComposerWorks] = useState<WorkType[] | []>([]);
+  const [selectedComposer, setSelectedComposer] = useState<ComposerType | null>(null)
 
   useEffect(() => {
     let mounted = true
@@ -31,6 +33,7 @@ const WorksList = ({ composerId }: PropsType) => {
           .getWorksFromComposerId(composerId)
           .then(response => {
             if (mounted) {
+              setSelectedComposer(selectedComposer)
               setComposerWorks(response.works)
             }
           })
@@ -47,12 +50,17 @@ const WorksList = ({ composerId }: PropsType) => {
     }
   }, [composerId, composerList])
 
-  const listOfWorks = composerWorks.map((work: WorkType) => (
-    <Work 
-      key={work.id}
-      work={work}
-    />
-  ))
+  const listOfWorks = composerWorks.map((work: WorkType) => {
+    if (selectedComposer) {
+      return (
+        <Work 
+          key={work.id}
+          work={work}
+          composer={selectedComposer}
+        />
+      )
+    }
+  })
 
   if (!composerWorks) {
     return <h1>Loading ...</h1>

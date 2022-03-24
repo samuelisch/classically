@@ -4,6 +4,8 @@ import { showYear } from '../assets/utils';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { ThemeContext } from '../../ThemeContextWrapper';
+import { useAppDispatch } from '../../reducers/hooks';
+import { addViewedComposers } from '../../reducers/viewedComposersSlice';
 
 const StyledLi = styled.li`
   border-bottom: 1px solid ${props => props.theme.borderColor};
@@ -56,26 +58,32 @@ const StyledDates = styled.span`
   font-size: 1.3rem;
 `
 
-const Composer = ({ id, birth, name, portrait }:ComposerType) => {
+type PropsType = {
+  composer: ComposerType
+}
+
+const Composer = ({ composer } :PropsType) => {
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    navigate(`/composer/${id}`)
+    dispatch(addViewedComposers(composer));
+    navigate(`/composer/${composer.id}`)
   }
 
   return (
     <StyledLi onClick={handleClick} theme={theme}>
       <StyledDetails>
         <StyledImageContainer>
-          <img src={portrait} alt="" />
+          <img src={composer.portrait} alt="" />
         </StyledImageContainer>
         <span>
-          {name}
+          {composer.name}
         </span>
       </StyledDetails>
       <StyledDates>
-        <i>b: {showYear(birth)}</i>
+        <i>b: {showYear(composer.birth)}</i>
       </StyledDates>
     </StyledLi>
   )
