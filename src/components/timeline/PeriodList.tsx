@@ -1,4 +1,4 @@
-import { ComposerType } from '../../reducers/composersSlice'
+import { ComposerType } from '../assets/types'
 import { showYear } from '../assets/utils'
 
 import Period from './Period'

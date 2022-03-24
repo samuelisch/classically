@@ -12,10 +12,17 @@ const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 `
 
 const StyledElement = styled.li`
-  margin: 20px 25px;
+  margin: 25px 30px;
   padding: 20px;
   border-radius: 10px;
   display: flex;

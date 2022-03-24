@@ -1,15 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import musicCall from "../apiCalls/musicCall";
-
-export type ComposerType = {
-  id: string;
-  birth: string;
-  death: string;
-  name: string;
-  complete_name: string;
-  epoch: string;
-  portrait: string;
-};
+import { ComposerType } from "../components/assets/types";
 
 type ComposersState = {
   status: "loading" | "idle" | "loaded";

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ComposerType } from "./composersSlice";
+import { ComposerType } from "../components/assets/types";
 
 const initialState: ComposerType[] = []
 

@@ -1,15 +1,11 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { ComposerType } from "../../reducers/composersSlice";
 import { useAppDispatch } from "../../reducers/hooks";
 import { addViewedComposers } from "../../reducers/viewedComposersSlice";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { listColor } from "../assets/utils";
-
-type StyledProps = {
-  period: string
-}
+import { ComposerType, StyledColorProps } from "../assets/types";
 
 const StyledLi = styled.li`
   border-bottom: 1px solid ${props => props.theme.borderColor};
@@ -42,7 +38,7 @@ const StyledPeriod = styled.div`
   font-size: 1.3rem;
 `
 
-const StyledImageContainer = styled.div<StyledProps>`
+const StyledImageContainer = styled.div<StyledColorProps>`
   width: 50px;
   height: 50px;
   border: 2px solid ${props => listColor(props.period)};

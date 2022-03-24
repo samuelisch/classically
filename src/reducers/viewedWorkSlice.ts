@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { WorkType } from "../components/works/WorkPage";
-import { ComposerType } from "./composersSlice";
+import { ComposerType, WorkType } from "../components/assets/types";
 
 type ViewedWorkType = {
   workComposer: ComposerType,

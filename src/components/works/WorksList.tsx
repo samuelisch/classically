@@ -1,15 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { useAppSelector } from "../../reducers/hooks";
 import Work from "./Work";
-import { WorkType } from './WorkPage'
 import styled from "styled-components";
 import musicCall from "../../apiCalls/musicCall";
 import { ThemeContext } from "../../ThemeContextWrapper";
-import { ComposerType } from "../../reducers/composersSlice";
-
-type PropsType = {
-  composerId: string
-}
+import { ComposerType, WorkType } from "../assets/types";
 
 const StyledList = styled.ul`
   background: ${props => props.theme.background};
@@ -17,6 +12,10 @@ const StyledList = styled.ul`
   border-top: 1px solid rgb(150, 150, 150);
   border-bottom: 1px solid rgb(150, 150, 150);
 `
+
+type PropsType = {
+  composerId: string
+}
 
 const WorksList = ({ composerId }: PropsType) => {
   const { theme } = useContext(ThemeContext)

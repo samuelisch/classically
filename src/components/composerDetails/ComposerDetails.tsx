@@ -1,14 +1,10 @@
 import styled from "styled-components";
-import { ComposerType } from "../../reducers/composersSlice";
+import { ComposerType, StyledColorProps } from "../assets/types";
 import { showYear } from "../assets/utils";
 import { listColor } from '../assets/utils';
 
 
-type StyledProps = {
-  period: string
-}
-
-const StyledContainer = styled.div<StyledProps>`
+const StyledContainer = styled.div<StyledColorProps>`
   display: flex;
   flex-direction: column;
   align-items: center;

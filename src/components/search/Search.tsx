@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import musicCall from "../../apiCalls/musicCall";
 import { ThemeContext } from "../../ThemeContextWrapper";
+import { SearchResultType } from "../assets/types";
 
-import ResultList, { ResultType } from "./ResultList";
+import ResultList from "./ResultList";
 
 const StyledContainer = styled.div`
   padding: 20px 0;
@@ -36,7 +37,7 @@ const StyledInput = styled.input`
 const Search = () => {
   const { theme } = useContext(ThemeContext);
   const [inputVal, setInputVal] = useState("");
-  const [results, setResults] = useState<ResultType[]>([]);
+  const [results, setResults] = useState<SearchResultType[]>([]);
   const [empty, setEmpty] = useState(false);
   
   useEffect(() => {
@@ -55,7 +56,7 @@ const Search = () => {
             setEmpty(true)
           } else {
             setEmpty(false)
-            const filteredResults = response.results.filter((result: ResultType) => result.work)
+            const filteredResults = response.results.filter((result: SearchResultType) => result.work)
             setResults(filteredResults)
           }
         }

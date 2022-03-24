@@ -5,6 +5,7 @@ import { ThemeContext } from '../../ThemeContextWrapper';
 import ViewedComposers from './ViewedComposers';
 import ViewedWorks from './ViewedWorks';
 import RandomWorks from './RandomWorks';
+import { RandomWorkType } from '../assets/types';
 
 const StyledContainer = styled.div`
   height: 100%;
@@ -13,18 +14,6 @@ const StyledContainer = styled.div`
   color: ${props => props.theme.color};
   padding: 20px;
 `
-
-export type RandomWorkType = {
-  id: string,
-  title: string,
-  genre: string,
-  composer: {
-    id: string,
-    name: string,
-    complete_name: string,
-    epoch: string
-  }
-}
 
 const Home = () => {
   const { theme } = useContext(ThemeContext);

@@ -2,26 +2,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as BackButton } from "../assets/backButton.svg";
 import { useAppDispatch, useAppSelector } from "../../reducers/hooks";
 import { useEffect, useState } from "react";
-import { ComposerType } from "../../reducers/composersSlice";
 import styled from "styled-components";
 import { listColor } from '../assets/utils';
 
 import WorkPageRecordingList from "./WorkPageRecordingList";
 import musicCall from "../../apiCalls/musicCall";
 import { addViewedComposers } from "../../reducers/viewedComposersSlice";
+import { ComposerType, StyledColorProps, WorkType } from "../assets/types";
 
-type StyledProps = {
-  period: string
-}
-
-export type WorkType = {
-  id: string
-  genre: string,
-  title: string,
-  searchterms: string[]
-}
-
-const StyledSticky = styled.div<StyledProps>`
+const StyledSticky = styled.div<StyledColorProps>`
   position: sticky;
   top: 0;
   background: ${props => listColor(props.period)};

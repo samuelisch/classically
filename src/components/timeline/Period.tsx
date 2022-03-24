@@ -1,14 +1,10 @@
 import styled from 'styled-components'
-import { ComposerType } from '../../reducers/composersSlice';
+import { ComposerType, StyledColorProps } from '../assets/types';
 import { listColor, listYears } from '../assets/utils';
 
 import Composer from './PeriodComposer'
 
-type StyledProps = {
-  period: string
-}
-
-const StyledContainer = styled.div<StyledProps>`
+const StyledContainer = styled.div<StyledColorProps>`
   padding-left: 20px;
   background: ${props => listColor(props.period)};
 

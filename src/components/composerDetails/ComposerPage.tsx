@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ComposerType } from "../../reducers/composersSlice";
 import { useAppSelector } from "../../reducers/hooks";
 import { ReactComponent as BackButton } from "../assets/backButton.svg";
 import styled from "styled-components";
@@ -8,16 +7,13 @@ import { listColor } from '../assets/utils';
 
 import ComposerDetails from "./ComposerDetails";
 import WorksList from "../works/WorksList";
-
-type StyledProps = {
-  period: string
-}
+import { ComposerType, StyledColorProps } from "../assets/types";
 
 const StyledContainer = styled.div`
   position: relative;
 `;
 
-const StyledSticky = styled.div<StyledProps>`
+const StyledSticky = styled.div<StyledColorProps>`
   position: sticky;
   top: 0;
   background: ${props => listColor(props.period)};

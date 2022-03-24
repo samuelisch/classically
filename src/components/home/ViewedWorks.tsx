@@ -8,6 +8,8 @@ const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1720px;
+  margin: 0 auto;
 
   @media (min-width: 1200px) {
     display: grid;

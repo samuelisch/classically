@@ -1,11 +1,10 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import { ComposerType } from '../../reducers/composersSlice'
 import { useAppDispatch } from '../../reducers/hooks'
 import { addViewedWorks } from '../../reducers/viewedWorkSlice'
 import { ThemeContext } from '../../ThemeContextWrapper'
-import { WorkType } from './WorkPage'
+import { ComposerType, WorkType } from '../assets/types'
 
 const StyledElement = styled.li`
   background: ${props => props.theme.listBackground};

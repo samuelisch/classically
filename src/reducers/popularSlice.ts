@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import musicCall from "../apiCalls/musicCall";
-import type { ComposerType } from "./composersSlice";
+import { ComposerType } from "../components/assets/types";
 
 type PopularState = {
   status: "loading" | "idle" | "loaded";

@@ -1,13 +1,7 @@
-import { ComposerType } from '../../reducers/composersSlice'
-import { WorkType } from '../works/WorkPage'
 import styled from 'styled-components'
+import { SearchResultType } from '../assets/types'
 
 import Result from './Result'
-
-export type ResultType = {
-  composer: ComposerType,
-  work: WorkType
-}
 
 const StyledList = styled.ul`
   margin-top: 20px;
@@ -15,12 +9,12 @@ const StyledList = styled.ul`
   border-bottom: 1px solid rgb(100, 100, 100);
 `
 
-export type PropsType = {
-  results: ResultType[]
+type PropsType = {
+  results: SearchResultType[]
 }
 
 const ResultList = ({ results }: PropsType) => {
-  const allTracks = results.map((result: ResultType) => (
+  const allTracks = results.map((result: SearchResultType) => (
     <Result 
       key={result.work.id} // TO BE REPLACED WITH ID
       result={result}

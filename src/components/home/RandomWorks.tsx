@@ -3,16 +3,14 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { listColor } from "../assets/utils";
-import { RandomWorkType } from "./Home";
-
-type StyledProps = {
-  period: string
-}
+import { RandomWorkType, StyledColorProps } from '../assets/types'
 
 const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1720px;
+  margin: 0 auto;
 
   @media (min-width: 1200px) {
     display: grid;
@@ -20,7 +18,7 @@ const StyledList = styled.ul`
   }
 `
 
-const StyledElement = styled.li<StyledProps>`
+const StyledElement = styled.li<StyledColorProps>`
   flex: 1;
   margin: 10px;
   padding: 20px;

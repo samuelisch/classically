@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useAppDispatch } from '../../reducers/hooks'
 import { addViewedWorks } from '../../reducers/viewedWorkSlice'
 import { ThemeContext } from '../../ThemeContextWrapper'
-import { ResultType } from './ResultList'
+import { SearchResultType } from '../assets/types'
 
 const StyledElement = styled.li`
   width: 100%;
@@ -35,7 +35,7 @@ const StyledDescription = styled.div`
 `
 
 type PropsType = {
-  result: ResultType
+  result: SearchResultType
 }
 
 const Result = ({ result }: PropsType) => {

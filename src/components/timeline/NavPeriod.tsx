@@ -3,14 +3,7 @@ import { listColor, listYears } from '../assets/utils'
 import { HashLink } from 'react-router-hash-link'
 import { useContext } from 'react'
 import { ThemeContext } from '../../ThemeContextWrapper'
-
-type StyledProps = {
-  period: string
-}
-
-type PropTypes = {
-  text: string
-}
+import { StyledColorProps } from '../assets/types'
 
 const StyledContainer = styled.div`
   margin: 8px;
@@ -26,7 +19,11 @@ const StyledContainer = styled.div`
   }
 `
 
-const StyledText = styled.div<StyledProps>`
+type PropTypes = {
+  text: string
+}
+
+const StyledText = styled.div<StyledColorProps>`
   background: ${props => listColor(props.period)};
   padding: 5px 8px;
   border-radius: 5px;
