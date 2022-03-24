@@ -63,7 +63,7 @@ const Popular = ({ id, complete_name, epoch, portrait }: ComposerType) => {
     // if (selected) {
     //   console.log(selected.works)
     // }
-    navigate(`/composer/${id}`)
+    navigate(`/classically/composer/${id}`)
   }
 
   return (

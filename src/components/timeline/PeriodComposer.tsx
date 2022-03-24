@@ -61,7 +61,7 @@ const Composer = ({ id, birth, name, portrait }:ComposerType) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/composer/${id}`)
+    navigate(`/classically/composer/${id}`)
   }
 
   return (
