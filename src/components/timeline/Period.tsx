@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { ComposerType } from '../../reducers/composersSlice';
 import { listColor, listYears } from '../assets/utils';
-import { HashLink } from 'react-router-hash-link'
 
 import Composer from './PeriodComposer'
 
@@ -72,7 +71,6 @@ const Period = ({ period, composerList }: PropsType) => {
           <h4>{period}</h4>
           <span className="years">{listYears(period)}</span>
         </div>
-        <HashLink smooth to="#">Back to top</HashLink>
       </div>
       <StyledList>{composers}</StyledList>
     </StyledContainer>
