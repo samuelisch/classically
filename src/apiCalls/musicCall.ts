@@ -32,13 +32,19 @@ const getWorkDetail = async (id:string) => {
   return response.data
 }
 
+const getRandomWorks = async () => {
+  const response = await axios.post(`${baseUrl}/dyn/work/random/`)
+  return response.data
+}
+
 const musicCall = {
   getAllComposers,
   getPopularComposers,
   getComposer,
   getWorksFromComposerId,
   searchMusic,
-  getWorkDetail
+  getWorkDetail,
+  getRandomWorks
 }
 
 export default musicCall
