@@ -13,7 +13,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />}>
-          <Route index element={<Home />} />
+          <Route index element={<PopularList />} />
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/popular" element={<PopularList />} />
           <Route path="/composer/:composerId" element={<ComposerPage />} />
