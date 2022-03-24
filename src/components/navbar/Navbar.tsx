@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { IconContext } from 'react-icons'
 import { AiOutlineHome } from 'react-icons/ai'
 import { GiMusicalScore, GiBackwardTime } from "react-icons/gi";
+import { HiOutlineLightBulb, HiLightBulb } from 'react-icons/hi';
 import { BiSearch } from 'react-icons/bi'
 import { ThemeType } from '../assets/types';
 import styled from 'styled-components'
@@ -14,6 +15,7 @@ const StyledNav = styled.nav<ThemeType>`
   padding: 0 10px;
   border-right: 1px solid black;
   background: ${props => props.theme.background};
+  transition: background .1s;
 `
 
 const StyledList = styled.ul`
@@ -25,6 +27,18 @@ const StyledList = styled.ul`
 
   .mode {
     margin-bottom: 10px;
+  }
+
+  button {
+    padding: 10px;
+    background: ${props => props.theme.background};
+    border: none;
+    border-radius: 50%;
+
+    &:hover {
+      background: ${props => props.theme.hoverColor};
+      cursor: pointer;
+    }
   }
 `
 
@@ -80,7 +94,7 @@ const Navbar = () => {
   return (
     <StyledNav theme={theme}>
       <StyledIconContext className="iconProvider" theme={theme}>
-        <StyledList>
+        <StyledList theme={theme}>
           <div>
             <StyledLink to="/home" theme={theme}>
               <li>
@@ -111,9 +125,9 @@ const Navbar = () => {
             <button type="button" onClick={toggleTheme}>
               {darkMode 
               ?
-                <span>Light Mode</span>
+                <HiOutlineLightBulb />
               :
-                <span>Dark Mode</span>
+                <HiLightBulb />
               }
             </button>
           </div>

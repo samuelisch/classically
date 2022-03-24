@@ -31,7 +31,6 @@ const ThemeContextWrapper = (props:any) => {
 
   const toggleTheme = () => {
     if (theme.type === themes.light.type) {
-      console.log('turning dark')
       setTheme(themes.dark)
     } else if (theme.type === themes.dark.type) {
       console.log("turning bright");

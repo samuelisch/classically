@@ -24,6 +24,7 @@ const StyledSticky = styled.div<StyledProps>`
   position: sticky;
   top: 0;
   background: ${props => listColor(props.period)};
+  transition: background .1s;
   color: rgb(240, 240, 240);
   padding: 5px 5px 10px;
 `

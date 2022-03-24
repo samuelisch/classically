@@ -7,6 +7,7 @@ import Popular from "./Popular";
 const StyledContainer = styled.div`
   background: ${props => props.theme.background};
   color: ${props => props.theme.color};
+  transition: background .1s;
 
   h1 {
     padding: 5px;

@@ -8,6 +8,7 @@ const StyledContainer = styled.div`
   position: sticky;
   top: 0;
   background: ${props => props.theme.background};
+  transition: background .1s;
   z-index: 5;
 `
 

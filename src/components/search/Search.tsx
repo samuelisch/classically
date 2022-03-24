@@ -10,6 +10,11 @@ const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: ${props => props.theme.background};
+  transition: background .1s;
+
+  h1 {
+    color: ${props => props.theme.color};
+  }
 `;
 
 const StyledInput = styled.input`
@@ -21,6 +26,7 @@ const StyledInput = styled.input`
   background: ${props => props.theme.background};
   border-bottom: 1px solid rgb(150, 150, 150);
   color: ${props => props.theme.color};
+  transition: background .1s;
 
   &:focus {
     outline: none;

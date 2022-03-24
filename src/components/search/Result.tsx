@@ -9,6 +9,7 @@ const StyledElement = styled.li`
   border-bottom: 1px solid rgb(180, 180, 180);
   transition: background .1s;
   background: ${props => props.theme.background};
+  transition: background .1s;
 
   &:last-of-type {
     border-bottom: none;

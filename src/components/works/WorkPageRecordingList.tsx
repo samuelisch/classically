@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import spotifyCall from "../../apiCalls/spotifyCall";
 import { ComposerType } from "../../reducers/composersSlice";
+import { ThemeContext } from "../../ThemeContextWrapper";
 import Recording, { RecordingPropsType } from "./Recording";
 import { WorkType } from "./WorkPage";
 
@@ -13,6 +14,7 @@ type PropTypes = {
 const StyledEmpty = styled.div`
   font-size: 2rem;
   text-align: center;
+  color: ${props => props.theme.color};
 `
 
 const StyledList = styled.ul`
@@ -21,6 +23,7 @@ const StyledList = styled.ul`
 `;
 
 const WorkPageRecordingList = ({ selectedComposer, work }: PropTypes) => {
+  const { theme } = useContext(ThemeContext)
   const [workTracks, setWorkTracks] = useState<RecordingPropsType[]>([]);
   const [loaded, setLoaded] = useState(false);
 
@@ -79,7 +82,7 @@ const WorkPageRecordingList = ({ selectedComposer, work }: PropTypes) => {
   }
 
   if (!sortedTracks.length) {
-    return <StyledEmpty><span>No tracks available :(</span></StyledEmpty>
+    return <StyledEmpty theme={theme}><span>No tracks available :(</span></StyledEmpty>
   } else {
     return <StyledList>{allTracks}</StyledList>;
   }

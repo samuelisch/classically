@@ -12,6 +12,7 @@ type PropsType = {
 
 const StyledList = styled.ul`
   background: ${props => props.theme.background};
+  transition: background .1s;
   border-top: 1px solid rgb(150, 150, 150);
   border-bottom: 1px solid rgb(150, 150, 150);
 `
