@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Main from "./components/Main";
 // import Home from "./components/home/Home";
@@ -10,7 +10,7 @@ import Search from "./components/search/Search";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/classically" element={<Main />}>
           <Route index element={<PopularList />} />
@@ -22,7 +22,7 @@ const Router = () => {
         </Route>
         <Route path="*" element={<Navigate to="/classically" />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
