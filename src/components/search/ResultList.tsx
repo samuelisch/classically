@@ -11,8 +11,8 @@ export type ResultType = {
 
 const StyledList = styled.ul`
   margin-top: 20px;
-  border-top: 1px solid rgb(150, 150, 150);
-  border-bottom: 1px solid rgb(150, 150, 150);
+  border-top: 1px solid rgb(100, 100, 100);
+  border-bottom: 1px solid rgb(100, 100, 100);
 `
 
 export type PropsType = {

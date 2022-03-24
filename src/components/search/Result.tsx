@@ -6,7 +6,7 @@ import { ThemeContext } from '../../ThemeContextWrapper'
 const StyledElement = styled.li`
   width: 100%;
   padding: 5px 8px;
-  border-bottom: 1px solid rgb(180, 180, 180);
+  border-bottom: 1px solid ${props => props.theme.borderColor};
   transition: background .1s;
   background: ${props => props.theme.background};
   transition: background .1s;

@@ -27,7 +27,7 @@ const StyledElement = styled.li`
 const StyledContainer = styled.div`
   padding: 20px 10px;
   margin-left: 5px;
-  border-bottom: 1px solid rgb(180, 180, 180);
+  border-bottom: 1px solid ${props => props.theme.borderColor};
   display: flex;
   justify-content: space-between;
   align-items: center;

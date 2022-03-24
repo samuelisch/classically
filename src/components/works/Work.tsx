@@ -17,7 +17,7 @@ const StyledElement = styled.li`
 const StyledContainer = styled.div`
   padding: 5px 0;
   margin: 0 5px;
-  border-bottom: 1px solid rgb(180, 180, 180);
+  border-bottom: 1px solid ${props => props.theme.borderColor};
   color: ${props => props.theme.color};
 `
 

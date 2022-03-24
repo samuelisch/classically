@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { ThemeContext } from '../../ThemeContextWrapper';
 
 const StyledLi = styled.li`
-  border-bottom: 1px solid rgb(150, 150, 150);
+  border-bottom: 1px solid ${props => props.theme.borderColor};
   padding: 5px 20px 5px 10px;
   flex: 1;
   font-size: 1.5rem;

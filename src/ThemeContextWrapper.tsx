@@ -4,11 +4,11 @@ export const themes = {
   dark: {
     type: 'dark',
     background: 'rgb(40, 40, 40)',
-    listBackground: 'rgb(60, 60, 60)',
+    listBackground: 'rgb(50, 50, 50)',
     color: 'rgb(220, 220, 220)',
     hoverColor: 'rgb(60, 60, 60)',
-    listHoverColor: 'rgb(80, 80, 80)',
-    borderColor: 'rgb(120, 120, 120)'
+    listHoverColor: 'rgb(70, 70, 70)',
+    borderColor: 'rgb(80, 80, 80)'
   },
   light: {
     type: 'light',
