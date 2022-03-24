@@ -9,10 +9,6 @@ type StyledProps = {
   period: string
 }
 
-const StyledContainer = styled.div`
-  margin: 50px 0;
-`
-
 const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -73,12 +69,12 @@ const RandomWorks = ({ randomWorks }: PropsType) => {
   }
 
   return (
-    <StyledContainer>
+    <>
       <h1>Reccomended Tracks</h1>
       <StyledList>
         {allRandomWorks}
       </StyledList>
-    </StyledContainer>
+    </>
   )
 }
 

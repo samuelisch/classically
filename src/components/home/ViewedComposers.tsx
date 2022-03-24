@@ -5,7 +5,7 @@ import { useAppSelector } from "../../reducers/hooks";
 import { ThemeContext } from "../../ThemeContextWrapper";
 
 const StyledContainer = styled.div`
-  margin-top: 50px;
+  margin: 50px 0;
 `
 
 const StyledList = styled.ul`
