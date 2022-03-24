@@ -4,6 +4,7 @@ import spotifyCall from "./apiCalls/spotifyCall";
 import { fetchAllComposers } from "./reducers/composersSlice";
 import { useAppDispatch } from "./reducers/hooks";
 import { fetchPopularComposers } from "./reducers/popularSlice";
+import { fetchRecommendedWorks } from "./reducers/recommendedWorksSlice";
 import Router from "./Router";
 import { ThemeContext } from "./ThemeContextWrapper";
 
@@ -35,6 +36,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    dispatch(fetchRecommendedWorks());
     dispatch(fetchAllComposers());
     dispatch(fetchPopularComposers());
   }, [dispatch]);

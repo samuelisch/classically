@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { listColor } from "../assets/utils";
-import { RandomWorkType, StyledColorProps } from "../assets/types";
+import { StyledColorProps } from "../assets/types";
+import { useAppSelector } from "../../reducers/hooks";
 
 const StyledList = styled.ul`
   display: flex;
@@ -47,15 +48,12 @@ const StyledElement = styled.li<StyledColorProps>`
   }
 `;
 
-type PropsType = {
-  randomWorks: RandomWorkType[];
-};
-
-const RandomWorks = ({ randomWorks }: PropsType) => {
+const RandomWorks = () => {
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
+  const { recommendedWorks } = useAppSelector(state => state.recommendedWorks);
 
-  const allRandomWorks = randomWorks.map((obj) => (
+  const allRandomWorks = recommendedWorks.map((obj) => (
     <StyledElement
       theme={theme}
       key={obj.id}
@@ -67,7 +65,7 @@ const RandomWorks = ({ randomWorks }: PropsType) => {
     </StyledElement>
   ));
 
-  if (!randomWorks.length) {
+  if (!recommendedWorks.length) {
     return null;
   }
 

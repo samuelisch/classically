@@ -19,7 +19,7 @@ const StyledNav = styled.nav<ThemeType>`
 `;
 
 const StyledList = styled.ul`
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
