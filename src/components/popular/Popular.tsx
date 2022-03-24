@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ComposerType } from "../../reducers/composersSlice";
 import { ThemeContext } from "../../ThemeContextWrapper";
-import { ThemeType } from "../assets/types";
-import { listColor, mode } from "../assets/utils";
+import { listColor } from "../assets/utils";
 
 type StyledProps = {
   period: string

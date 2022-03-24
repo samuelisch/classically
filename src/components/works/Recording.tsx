@@ -3,7 +3,6 @@ import { BsFillPlayFill, BsPauseFill } from 'react-icons/bs'
 import { IconContext } from 'react-icons'
 import styled from "styled-components";
 import { ThemeContext } from "../../ThemeContextWrapper";
-import { mode } from "../assets/utils";
 
 export type RecordingPropsType = {
   id: string, // id

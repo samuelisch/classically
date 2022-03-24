@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { listColor, listYears, mode } from '../assets/utils'
+import { listColor, listYears } from '../assets/utils'
 import { HashLink } from 'react-router-hash-link'
 import { useContext } from 'react'
 import { ThemeContext } from '../../ThemeContextWrapper'

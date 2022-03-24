@@ -1,22 +1,3 @@
-export let mode = {
-  color: "rgb(240, 240, 240)",
-  background: 'rgb(40, 40, 40)'
-}
-
-export const toggleDayMode = (day:boolean) => {
-  if (day) {
-    mode = {
-      background: 'rgb(240, 240, 240)',
-      color: 'rgb(40, 40, 40'
-    }
-  } else {
-    mode = {
-      background: 'rgb(240, 240, 240)',
-      color: 'rgb(20, 20, 20)'
-    }
-  }
-}
-
 export const showYear = (date: string) => {
   return date.split('-')[0]
 }
