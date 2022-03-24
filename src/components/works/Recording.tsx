@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import { ReactComponent as PlayButton } from '../assets/playButton.svg'
-import { ReactComponent as PauseButton} from '../assets/pauseButton.svg'
+import { useContext, useEffect, useState } from "react";
+import { BsFillPlayFill, BsPauseFill } from 'react-icons/bs'
+import { IconContext } from 'react-icons'
 import styled from "styled-components";
+import { ThemeContext } from "../../ThemeContextWrapper";
 import { mode } from "../assets/utils";
 
 export type RecordingPropsType = {
@@ -15,17 +16,17 @@ export type RecordingPropsType = {
 }
 
 const StyledElement = styled.li`
-  background: ${mode.background};
+  background: ${props => props.theme.listBackground};
   transition: background .1s;
 
   &:hover {
-    background: rgb(60, 60, 60);
+    background: ${props => props.theme.listHoverColor};
     cursor: pointer;
   }
 `
 
 const StyledContainer = styled.div`
-  padding: 10px;
+  padding: 20px 10px;
   margin-left: 5px;
   border-bottom: 1px solid rgb(180, 180, 180);
   display: flex;
@@ -33,14 +34,14 @@ const StyledContainer = styled.div`
   align-items: center;
 
   a {
-    color: ${mode.color};
+    color: ${props => props.theme.color};
     text-decoration: none;
   }
 `
 
 const StyledImgContainer = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border: 1px solid rgb(180, 180, 180);
   border-radius: 5px;
   overflow: hidden;
@@ -63,12 +64,12 @@ const StyledDetails = styled.div`
   padding: 0 5px;
 
   .albumName {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: bold;
   }
 
   .trackName {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 `
 
@@ -80,7 +81,7 @@ const StyledPreview = styled.div`
     height: 30px;
     font-size: 1.5rem;
     border: none;
-    background: ${mode.color};
+    background: transparent;
     border-radius: 50%;
 
     &:hover {
@@ -89,7 +90,15 @@ const StyledPreview = styled.div`
   }
 `
 
+const IconContextProvider = ({className, children}:any) => <IconContext.Provider value={{className}}>{children}</IconContext.Provider>;
+
+const StyledIconContext = styled(IconContextProvider)`
+  color: ${props => props.theme.color};
+  font-size: 2.3rem;
+`
+
 const Recording = ({ albumName, albumLink, albumImg, trackLink, trackName, previewSound }: RecordingPropsType) => {
+  const { theme } = useContext(ThemeContext)
   const [audio, setAudio] = useState(new Audio());
   const [audioPlaying, setAudioPlaying] = useState(false);
 
@@ -117,8 +126,8 @@ const Recording = ({ albumName, albumLink, albumImg, trackLink, trackName, previ
   }, [audio]);
 
   return (
-    <StyledElement>
-        <StyledContainer>
+    <StyledElement theme={theme}>
+        <StyledContainer theme={theme}>
           <StyledDetails>
           <a href={albumLink} target="_blank" rel='noopener noreferrer'>
           <StyledImgContainer>
@@ -134,9 +143,11 @@ const Recording = ({ albumName, albumLink, albumImg, trackLink, trackName, previ
           </StyledDetails>
           {previewSound &&
             <StyledPreview>
-              <button type="button" onClick={toggleAudio}>
-                {audioPlaying ? <PauseButton /> : <PlayButton />}
-              </button>
+                <button type="button" onClick={toggleAudio}>
+                <StyledIconContext className="playIconProvider" theme={theme}>
+                  {audioPlaying ? <BsPauseFill /> : <BsFillPlayFill />}
+                </StyledIconContext>
+                </button>
             </StyledPreview>
           }
         </StyledContainer>

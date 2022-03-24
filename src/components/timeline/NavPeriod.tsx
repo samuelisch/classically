@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { listColor, listYears, mode } from '../assets/utils'
 import { HashLink } from 'react-router-hash-link'
+import { useContext } from 'react'
+import { ThemeContext } from '../../ThemeContextWrapper'
 
 type StyledProps = {
   period: string
@@ -35,15 +37,17 @@ const StyledText = styled.div<StyledProps>`
 
 const StyledYears = styled.div`
   font-size: 1.1rem;
-  color: ${mode.color};
+  color: ${props => props.theme.color};
 `
 
 const NavPeriod = ({ text }: PropTypes) => {
+  const { theme } = useContext(ThemeContext)
+
   return (
     <StyledContainer>
       <HashLink smooth to={`#${text}`}>
-        <StyledText period={text}>{text}</StyledText>
-        <StyledYears>{listYears(text)}</StyledYears>
+        <StyledText theme={theme} period={text}>{text}</StyledText>
+        <StyledYears theme={theme}>{listYears(text)}</StyledYears>
       </HashLink>
     </StyledContainer>
   )

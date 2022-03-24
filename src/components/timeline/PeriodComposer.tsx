@@ -1,7 +1,9 @@
 import { ComposerType } from '../../reducers/composersSlice';
 import styled from 'styled-components';
-import { mode, showYear } from '../assets/utils';
+import { showYear } from '../assets/utils';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { ThemeContext } from '../../ThemeContextWrapper';
 
 const StyledLi = styled.li`
   border-bottom: 1px solid rgb(150, 150, 150);
@@ -11,7 +13,8 @@ const StyledLi = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: ${mode.background};
+  background: ${props => props.theme.background};
+  color: ${props => props.theme.color};
   transition: background: .2s;
 
   &:first-of-type {
@@ -24,7 +27,7 @@ const StyledLi = styled.li`
   }
 
   &:hover {
-    background: rgb(60, 60, 60);
+    background: ${props => props.theme.hoverColor};
     cursor: pointer;
   }
 `
@@ -54,6 +57,7 @@ const StyledDates = styled.span`
 `
 
 const Composer = ({ id, birth, name, portrait }:ComposerType) => {
+  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -61,7 +65,7 @@ const Composer = ({ id, birth, name, portrait }:ComposerType) => {
   }
 
   return (
-    <StyledLi onClick={handleClick}>
+    <StyledLi onClick={handleClick} theme={theme}>
       <StyledDetails>
         <StyledImageContainer>
           <img src={portrait} alt="" />

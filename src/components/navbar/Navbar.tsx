@@ -3,15 +3,17 @@ import { IconContext } from 'react-icons'
 import { AiOutlineHome } from 'react-icons/ai'
 import { GiMusicalScore, GiBackwardTime } from "react-icons/gi";
 import { BiSearch } from 'react-icons/bi'
-import { mode } from '../assets/utils'
+import { ThemeType } from '../assets/types';
 import styled from 'styled-components'
+import { useContext, useState } from 'react';
+import { ThemeContext } from '../../ThemeContextWrapper';
 
-const StyledNav = styled.nav`
+const StyledNav = styled.nav<ThemeType>`
   flex: 1;
   max-width: 120px;
-  background: ${mode.background};
   padding: 0 10px;
   border-right: 1px solid black;
+  background: ${props => props.theme.background};
 `
 
 const StyledList = styled.ul`
@@ -27,11 +29,11 @@ const StyledList = styled.ul`
 `
 
 const StyledLink = styled(Link)`
-  color: inherit;
   text-decoration: none;
   display: flex;
   justfiy-content: center;
   margin-top: 10px;
+  color: ${props => props.theme.color};
 
   li {
     width: 90%;
@@ -54,7 +56,7 @@ const StyledLink = styled(Link)`
     }
 
     &:hover {
-      background: rgb(220, 220, 220);
+      background: ${props => props.theme.hoverColor};
     }
   }
 `
@@ -62,35 +64,43 @@ const StyledLink = styled(Link)`
 const IconContextProvider = ({className, children}:any) => <IconContext.Provider value={{className}}>{children}</IconContext.Provider>;
 
 const StyledIconContext = styled(IconContextProvider)`
-  color: ${mode.color};
+  color: ${props => props.theme.color};
   font-size: 2.3rem;
 `
 
 const Navbar = () => {
+  const [darkMode, setDarkMode] = useState(true)
+  const { theme, changeTheme } = useContext(ThemeContext)
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode)
+    changeTheme()
+  }
+
   return (
-    <StyledNav>
-      <StyledIconContext className="iconProvider">
+    <StyledNav theme={theme}>
+      <StyledIconContext className="iconProvider" theme={theme}>
         <StyledList>
           <div>
-            <StyledLink to="/home">
+            <StyledLink to="/home" theme={theme}>
               <li>
                 <AiOutlineHome />
                 <span className="iconText">Home</span>
               </li>
             </StyledLink>
-            <StyledLink to="/popular">
+            <StyledLink to="/popular" theme={theme}>
               <li>
                 <GiMusicalScore />
                 <span className="iconText">Featured</span>
               </li>
             </StyledLink>
-            <StyledLink to="/timeline">
+            <StyledLink to="/timeline" theme={theme}>
               <li>
                 <GiBackwardTime />
                 <span className="iconText">Timeline</span>
               </li>
             </StyledLink>
-            <StyledLink to="/search">
+            <StyledLink to="/search" theme={theme}>
               <li>
                 <BiSearch />
                 <span className="iconText">Search</span>
@@ -98,7 +108,14 @@ const Navbar = () => {
             </StyledLink>
           </div>
           <div className="mode">
-            <button type="button">Mode</button>
+            <button type="button" onClick={toggleTheme}>
+              {darkMode 
+              ?
+                <span>Light Mode</span>
+              :
+                <span>Dark Mode</span>
+              }
+            </button>
           </div>
         </StyledList>
       </StyledIconContext>

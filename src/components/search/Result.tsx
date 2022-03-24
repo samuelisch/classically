@@ -1,29 +1,33 @@
+import { useContext } from 'react'
 import { useNavigate } from 'react-router'
 import styled from 'styled-components'
+import { ThemeContext } from '../../ThemeContextWrapper'
 
 const StyledElement = styled.li`
   width: 100%;
   padding: 5px 8px;
   border-bottom: 1px solid rgb(180, 180, 180);
   transition: background .1s;
+  background: ${props => props.theme.background};
 
   &:last-of-type {
     border-bottom: none;
   }
 
   &:hover {
-    background: rgb(60, 60, 60);
+    background: ${props => props.theme.hoverColor};
     cursor: pointer;
   }
 `
 
 const StyledTitle = styled.p`
   font-size: 1.3rem;
+  color: ${props => props.theme.color}
 `
 
 const StyledDescription = styled.div`
   font-size: 1.1rem;
-  color: rgb(150, 150, 150);
+  color: ${props => props.theme.color};
 `
 
 type PropsType = {
@@ -36,12 +40,13 @@ type PropsType = {
 }
 
 const Result = ({ composerId, genre, titleId, title, composerName }: PropsType) => {
+  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
   return (
-    <StyledElement onClick={() => navigate(`/composer/${composerId}/${titleId}`)}>
-      <StyledTitle>{title}</StyledTitle>
-      <StyledDescription>
+    <StyledElement onClick={() => navigate(`/composer/${composerId}/${titleId}`)} theme={theme}>
+      <StyledTitle theme={theme}>{title}</StyledTitle>
+      <StyledDescription theme={theme}>
         <span>{composerName},</span>
         &nbsp;
         <span><i>{genre}</i></span>

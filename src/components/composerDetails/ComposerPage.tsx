@@ -15,7 +15,6 @@ type StyledProps = {
 
 const StyledContainer = styled.div`
   position: relative;
-  padding-bottom: 10px;
 `;
 
 const StyledSticky = styled.div<StyledProps>`

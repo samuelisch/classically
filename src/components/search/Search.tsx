@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import musicCall from "../../apiCalls/musicCall";
-import { mode } from "../assets/utils";
+import { ThemeContext } from "../../ThemeContextWrapper";
 
 import ResultList, { ResultType } from "./ResultList";
 
@@ -9,6 +9,7 @@ const StyledContainer = styled.div`
   padding: 20px 0;
   display: flex;
   flex-direction: column;
+  background: ${props => props.theme.background};
 `;
 
 const StyledInput = styled.input`
@@ -17,9 +18,9 @@ const StyledInput = styled.input`
   padding: 5px 10px;
   border: none;
   margin: 0 auto;
-  background: inherit;
+  background: ${props => props.theme.background};
   border-bottom: 1px solid rgb(150, 150, 150);
-  color: ${mode.color};
+  color: ${props => props.theme.color};
 
   &:focus {
     outline: none;
@@ -27,6 +28,7 @@ const StyledInput = styled.input`
 `;
 
 const Search = () => {
+  const { theme } = useContext(ThemeContext);
   const [inputVal, setInputVal] = useState("");
   const [results, setResults] = useState<ResultType[]>([]);
   const [empty, setEmpty] = useState(false);
@@ -64,8 +66,9 @@ const Search = () => {
   }, [inputVal])
 
   return (
-    <StyledContainer>
+    <StyledContainer theme={theme}>
       <StyledInput
+        theme={theme}
         type="text"
         id="searchInput"
         value={inputVal}

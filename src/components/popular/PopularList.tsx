@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAppSelector } from "../../reducers/hooks";
+import { ThemeContext } from "../../ThemeContextWrapper";
 import Popular from "./Popular";
 
 const StyledContainer = styled.div`
+  background: ${props => props.theme.background};
+  color: ${props => props.theme.color};
+
   h1 {
     padding: 5px;
   }
 `
 
 const PopularList = () => {
+  const { theme } = useContext(ThemeContext)
   const [loaded, setLoaded] = useState(false);
   const { popularList, status } = useAppSelector((state) => state.popular);
 
@@ -35,7 +40,7 @@ const PopularList = () => {
   ))
 
   return (
-    <StyledContainer>
+    <StyledContainer theme={theme}>
       <h1>Popular Composers</h1>
       {loaded ? (
         <>

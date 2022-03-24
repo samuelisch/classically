@@ -1,20 +1,17 @@
-import { useEffect } from "react";
-import { createGlobalStyle } from "styled-components";
+import { useContext, useEffect } from "react";
+import styled, { createGlobalStyle } from "styled-components";
 import spotifyCall from "./apiCalls/spotifyCall";
 import { fetchAllComposers } from "./reducers/composersSlice";
 import { useAppDispatch } from "./reducers/hooks";
 import { fetchPopularComposers } from "./reducers/popularSlice";
-import { mode } from './components/assets/utils'
-
 import Router from "./Router";
+import { ThemeContext } from "./ThemeContextWrapper";
 
 const GlobalStyle = createGlobalStyle`
   :root,
   body {
     font-size: 10px;
     font-family: Helvetica;
-    background: ${mode.background};
-    color: ${mode.color};
   }
 
   * {
@@ -25,15 +22,18 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const StyledContainer = styled.div`
+  background: ${props => props.theme.background};
+`
+
 const App = () => {
+  const { theme } = useContext(ThemeContext);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     spotifyCall.getToken()
   }, [])
 
-  // remove dispatch dump, add cleanup for api calls upon re-render
-  // useContext for dark mode
   useEffect(() => {
     dispatch(fetchAllComposers());
     dispatch(fetchPopularComposers());
@@ -42,7 +42,9 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Router />
+      <StyledContainer theme={theme}>
+        <Router />
+      </StyledContainer>
     </>
   );
 };

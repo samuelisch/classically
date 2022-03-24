@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ComposerType } from "../../reducers/composersSlice";
+import { ThemeContext } from "../../ThemeContextWrapper";
+import { ThemeType } from "../assets/types";
 import { listColor, mode } from "../assets/utils";
 
 type StyledProps = {
@@ -8,17 +11,17 @@ type StyledProps = {
 }
 
 const StyledLi = styled.li`
-  border-bottom: 1px solid rgb(100, 100, 100);
-  padding: 5px 10px;
+  border-bottom: 1px solid ${props => props.theme.borderColor};
+  padding: 10px;
   flex: 1;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  background: ${mode.background};
+  background: ${props => props.theme.background};
   transition: background .1s;
 
   &:hover {
-    background: rgb(60, 60, 60);
+    background: ${props => props.theme.hoverColor};
     cursor: pointer;
   }
 `
@@ -27,6 +30,7 @@ const StyledDetails = styled.div`
   display: flex;
   flex-direction: column;
   align-items: left;
+  color: ${props => props.theme.color};
 `
 
 const StyledName = styled.div`
@@ -52,6 +56,7 @@ const StyledImageContainer = styled.div<StyledProps>`
 `
 
 const Popular = ({ id, complete_name, epoch, portrait }: ComposerType) => {
+  const { theme } = useContext(ThemeContext)
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -63,13 +68,13 @@ const Popular = ({ id, complete_name, epoch, portrait }: ComposerType) => {
   }
 
   return (
-    <StyledLi onClick={handleClick}>
+    <StyledLi onClick={handleClick} theme={theme}>
       <StyledImageContainer period={epoch}>
         <img src={portrait} alt="" />
       </StyledImageContainer>
-      <StyledDetails>
-      <StyledName>{complete_name}</StyledName>
-      <StyledPeriod>{epoch}</StyledPeriod>
+      <StyledDetails theme={theme}>
+        <StyledName>{complete_name}</StyledName>
+        <StyledPeriod>{epoch}</StyledPeriod>
     </StyledDetails>
     </StyledLi>
   )

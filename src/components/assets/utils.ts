@@ -3,11 +3,11 @@ export let mode = {
   background: 'rgb(40, 40, 40)'
 }
 
-export const nightMode = (night:boolean) => {
-  if (night) {
+export const toggleDayMode = (day:boolean) => {
+  if (day) {
     mode = {
-      background: 'rgb(40, 40, 40)',
-      color: 'rgb(240, 240, 240'
+      background: 'rgb(240, 240, 240)',
+      color: 'rgb(40, 40, 40'
     }
   } else {
     mode = {

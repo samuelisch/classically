@@ -1,12 +1,13 @@
+import { useContext } from 'react'
 import styled from 'styled-components'
-import { mode } from '../assets/utils'
+import { ThemeContext } from '../../ThemeContextWrapper'
 
 import NavPeriod from './NavPeriod'
 
 const StyledContainer = styled.div`
   position: sticky;
   top: 0;
-  background: ${mode.background};
+  background: ${props => props.theme.background};
   z-index: 5;
 `
 
@@ -27,6 +28,8 @@ type PropTypes = {
 }
 
 const PeriodNavbar = ({ periods }: PropTypes) => {
+  const { theme } = useContext(ThemeContext)
+
   const elements = periods.map((period, i) => (
     <NavPeriod 
       key={i}
@@ -35,7 +38,7 @@ const PeriodNavbar = ({ periods }: PropTypes) => {
   ))
 
   return (
-    <StyledContainer>
+    <StyledContainer theme={theme}>
       <StyledList>
         {elements}
       </StyledList>
