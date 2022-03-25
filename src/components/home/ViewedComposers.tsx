@@ -1,6 +1,6 @@
+import styled from "styled-components";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { useAppSelector } from "../../reducers/hooks";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { StyledColorProps } from "../assets/types";
@@ -35,7 +35,7 @@ const StyledElement = styled.li<StyledColorProps>`
   height: 220px;
   box-shadow: 0px 0px 2px rgb(150, 150, 150);
   background: ${(props) => props.theme.listBackground};
-  transition: background .1s, transform .2s;
+  transition: background 0.1s, transform 0.2s;
 
   .imgContainer {
     width: 140px;
@@ -43,7 +43,7 @@ const StyledElement = styled.li<StyledColorProps>`
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid transparent;
-    transition: border-color .2s;
+    transition: border-color 0.2s;
 
     img {
       width: 100%;
@@ -61,7 +61,7 @@ const StyledElement = styled.li<StyledColorProps>`
     cursor: pointer;
     background: ${(props) => props.theme.listHoverColor};
     transform: translateY(-5px) scale(110%);
-    
+
     .imgContainer {
       border-color: ${(props) => listColor(props.period)};
     }

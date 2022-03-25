@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import spotifyCall from "../../apiCalls/spotifyCall";
+import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../ThemeContextWrapper";
-import { ComposerType, WorkType } from "../assets/types";
-import Recording, { RecordingPropsType } from "./Recording";
+import { ComposerType, RecordingPropsType, WorkType } from "../assets/types";
+
+import Recording from "./Recording";
 
 type PropTypes = {
   selectedComposer: ComposerType;

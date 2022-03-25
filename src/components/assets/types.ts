@@ -45,3 +45,13 @@ export type SearchResultType = {
   composer: ComposerType;
   work: WorkType;
 };
+
+export type RecordingPropsType = {
+  id: string;
+  albumName: string;
+  albumLink: string;
+  albumImg: string;
+  trackLink: string;
+  trackName: string;
+  previewSound: string;
+};

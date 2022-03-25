@@ -1,5 +1,5 @@
-import { useContext } from "react";
 import styled from "styled-components";
+import { useContext } from "react";
 import { ThemeContext } from "../../ThemeContextWrapper";
 
 import NavPeriod from "./NavPeriod";

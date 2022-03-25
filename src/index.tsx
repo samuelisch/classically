@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import { Provider } from "react-redux";
-import App from "./App";
 import { store } from "./reducers/store";
+
+import App from "./App";
 import ThemeContextWrapper from "./ThemeContextWrapper";
 
 ReactDOM.render(

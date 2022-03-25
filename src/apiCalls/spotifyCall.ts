@@ -11,7 +11,7 @@ const getToken = async () => {
   const response = await axios.post(tokenUrl, "grant_type=client_credentials", {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      'Authorization': `Basic ${clientEncoded}`,
+      Authorization: `Basic ${clientEncoded}`,
     },
   });
   token = `Bearer ${response.data.access_token}`;

@@ -1,6 +1,6 @@
+import styled from "styled-components";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { listColor } from "../assets/utils";
 import { ComposerType, StyledColorProps } from "../assets/types";

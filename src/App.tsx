@@ -1,12 +1,13 @@
-import { useContext, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import spotifyCall from "./apiCalls/spotifyCall";
+import { useContext, useEffect } from "react";
 import { fetchAllComposers } from "./reducers/composersSlice";
 import { useAppDispatch } from "./reducers/hooks";
 import { fetchPopularComposers } from "./reducers/popularSlice";
 import { fetchRecommendedWorks } from "./reducers/recommendedWorksSlice";
-import Router from "./Router";
 import { ThemeContext } from "./ThemeContextWrapper";
+
+import Router from "./Router";
 
 const GlobalStyle = createGlobalStyle`
   :root,

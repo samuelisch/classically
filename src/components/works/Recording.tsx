@@ -1,18 +1,9 @@
+import styled from "styled-components";
 import { useContext, useEffect, useState } from "react";
 import { BsFillPlayFill, BsPauseFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
-import styled from "styled-components";
 import { ThemeContext } from "../../ThemeContextWrapper";
-
-export type RecordingPropsType = {
-  id: string; // id
-  albumName: string; // album.name
-  albumLink: string; // album.external_urls.spotify
-  albumImg: string; // album.images[2]
-  trackLink: string; //external_urls.spotify
-  trackName: string; // name
-  previewSound: string; // preview_url
-};
+import { RecordingPropsType } from "../assets/types";
 
 const StyledElement = styled.li`
   background: ${(props) => props.theme.listBackground};

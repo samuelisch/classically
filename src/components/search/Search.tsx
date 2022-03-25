@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import musicCall from "../../apiCalls/musicCall";
+import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { SearchResultType } from "../assets/types";
 

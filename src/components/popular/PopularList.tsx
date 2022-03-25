@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import { useContext, useEffect, useState } from "react";
 import { useAppSelector } from "../../reducers/hooks";
 import { ThemeContext } from "../../ThemeContextWrapper";
+
 import Popular from "./Popular";
 
 const StyledContainer = styled.div`

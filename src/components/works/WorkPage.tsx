@@ -1,14 +1,14 @@
+import styled from "styled-components";
+import musicCall from "../../apiCalls/musicCall";
 import { useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as BackButton } from "../assets/backButton.svg";
 import { useAppDispatch, useAppSelector } from "../../reducers/hooks";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import { listColor } from "../assets/utils";
-
-import WorkPageRecordingList from "./WorkPageRecordingList";
-import musicCall from "../../apiCalls/musicCall";
 import { ComposerType, StyledColorProps, WorkType } from "../assets/types";
 import { addViewedWorks } from "../../reducers/viewedWorkSlice";
+
+import WorkPageRecordingList from "./WorkPageRecordingList";
 
 const StyledSticky = styled.div<StyledColorProps>`
   position: sticky;
@@ -91,9 +91,11 @@ const WorkPage = () => {
 
   useEffect(() => {
     if (selectedComposer && work) {
-      dispatch(addViewedWorks({workComposer: selectedComposer, viewedWork: work}))
+      dispatch(
+        addViewedWorks({ workComposer: selectedComposer, viewedWork: work })
+      );
     }
-  }, [selectedComposer, work, dispatch])
+  }, [selectedComposer, work, dispatch]);
 
   useEffect(() => {
     if (composerId) {

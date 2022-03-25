@@ -1,6 +1,6 @@
+import styled from "styled-components";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { listColor } from "../assets/utils";
 import { StyledColorProps } from "../assets/types";
@@ -33,9 +33,9 @@ const StyledElement = styled.li<StyledColorProps>`
   background: ${(props) => listColor(props.period)};
   position: relative;
   box-shadow: 0px 0px 2px rgb(150, 150, 150);
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   animation-name: slidein;
-  transition: transform .2s;
+  transition: transform 0.2s;
 
   .workName {
     font-size: 1.5rem;
@@ -69,7 +69,9 @@ const StyledElement = styled.li<StyledColorProps>`
 const RandomWorks = () => {
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const { recommendedWorks } = useAppSelector(state => state.recommendedWorks);
+  const { recommendedWorks } = useAppSelector(
+    (state) => state.recommendedWorks
+  );
 
   const allRandomWorks = recommendedWorks.map((obj) => (
     <StyledElement

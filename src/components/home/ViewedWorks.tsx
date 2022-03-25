@@ -1,6 +1,6 @@
+import styled from "styled-components";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { useAppSelector } from "../../reducers/hooks";
 import { ThemeContext } from "../../ThemeContextWrapper";
 
@@ -30,7 +30,7 @@ const StyledElement = styled.li`
   height: 70px;
   box-shadow: 0px 0px 2px rgb(150, 150, 150);
   background: ${(props) => props.theme.listBackground};
-  transition: transform .2s;
+  transition: transform 0.2s;
 
   .workName {
     font-size: 1.5rem;

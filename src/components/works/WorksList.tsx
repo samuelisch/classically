@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
-import { useAppSelector } from "../../reducers/hooks";
-import Work from "./Work";
 import styled from "styled-components";
 import musicCall from "../../apiCalls/musicCall";
+import { useContext, useEffect, useState } from "react";
+import { useAppSelector } from "../../reducers/hooks";
 import { ThemeContext } from "../../ThemeContextWrapper";
 import { ComposerType, WorkType } from "../assets/types";
+
+import Work from "./Work";
 
 const StyledList = styled.ul`
   background: ${(props) => props.theme.background};

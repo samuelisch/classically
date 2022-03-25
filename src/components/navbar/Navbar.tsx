@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { AiOutlineHome } from "react-icons/ai";
@@ -5,7 +6,6 @@ import { GiMusicalScore, GiBackwardTime } from "react-icons/gi";
 import { HiOutlineLightBulb, HiLightBulb } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { ThemeType } from "../assets/types";
-import styled from "styled-components";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../ThemeContextWrapper";
 
