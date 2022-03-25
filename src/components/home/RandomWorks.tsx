@@ -70,7 +70,6 @@ const StyledElement = styled.li<StyledColorProps>`
 
   &:hover {
     cursor: pointer;
-    opacity: 95%;
     transform: translateY(-5px) scale(103%);
   }
 
