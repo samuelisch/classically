@@ -52,6 +52,13 @@ const ViewedWorks = () => {
   const navigate = useNavigate();
   const viewedWorks = useAppSelector((state) => state.viewedWorks);
 
+  const cutTitle = (title:string) => {
+    if (title.length > 60) {
+      return title.slice(0, 60) + ' ...'
+    }
+    return title
+  }
+
   const allViewedWorks = viewedWorks.map((obj) => (
     <StyledElement
       theme={theme}
@@ -60,7 +67,7 @@ const ViewedWorks = () => {
         navigate(`/composer/${obj.workComposer.id}/${obj.viewedWork.id}/`)
       }
     >
-      <h2 className="workName">{obj.viewedWork.title}</h2>
+      <h2 className="workName">{cutTitle(obj.viewedWork.title)}</h2>
       <p className="workComposer">{obj.workComposer.complete_name}</p>
     </StyledElement>
   ));

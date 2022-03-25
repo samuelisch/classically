@@ -13,6 +13,26 @@ const StyledList = styled.ul`
   max-width: 1720px;
   margin: 0 auto;
 
+  li:nth-child(2) {
+    animation-delay: .1s
+  }
+
+  li:nth-child(3) {
+    animation-delay: .2s
+  }
+
+  li:nth-child(4) {
+    animation-delay: .3s
+  }
+
+  li:nth-child(5) {
+    animation-delay: .4s
+  }
+
+  li:nth-child(6) {
+    animation-delay: .5s
+  }
+
   @media (min-width: 1200px) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -33,8 +53,9 @@ const StyledElement = styled.li<StyledColorProps>`
   background: ${(props) => listColor(props.period)};
   position: relative;
   box-shadow: 0px 0px 2px rgb(150, 150, 150);
-  animation-duration: 0.5s;
-  animation-name: slidein;
+  opacity: 0%;
+  animation: slidein .5s ease-in-out;
+  animation-fill-mode: forwards;
   transition: transform 0.2s;
 
   .workName {
@@ -54,14 +75,14 @@ const StyledElement = styled.li<StyledColorProps>`
   }
 
   @keyframes slidein {
-    from {
+    0% {
       bottom: 100px;
       opacity: 0%;
     }
 
-    to {
+    100% {
       bottom: 0px;
-      opacity: 95%;
+      opacity: 100%;
     }
   }
 `;
@@ -73,6 +94,13 @@ const RandomWorks = () => {
     (state) => state.recommendedWorks
   );
 
+  const cutTitle = (title:string) => {
+    if (title.length > 60) {
+      return title.slice(0, 60) + ' ...'
+    }
+    return title
+  }
+
   const allRandomWorks = recommendedWorks.map((obj) => (
     <StyledElement
       theme={theme}
@@ -80,7 +108,7 @@ const RandomWorks = () => {
       period={obj.composer.epoch}
       onClick={() => navigate(`/composer/${obj.composer.id}/${obj.id}/`)}
     >
-      <h2 className="workName">{obj.title}</h2>
+      <h2 className="workName">{cutTitle(obj.title)}</h2>
       <p className="workComposer">{obj.composer.complete_name}</p>
     </StyledElement>
   ));
